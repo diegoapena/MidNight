@@ -21,7 +21,7 @@ public class RoomSow : MonoBehaviour
    
     public void SwitchState()
     {
-        activeRoom = !lightRoom;
+        activeRoom = !activeRoom;
         SetRoom();
 
 
