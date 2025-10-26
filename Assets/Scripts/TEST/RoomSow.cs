@@ -7,27 +7,32 @@ public class RoomSow : MonoBehaviour
 {
     [Header("References")]
     public RoomManagerSow Manager;
-    public GameObject Tooltip;
 
     public GameObject lightRoom;
 
-    public bool LightIsOn;
+    public bool activeRoom = false;
     
     void Start()
     {
         Manager = FindAnyObjectByType<RoomManagerSow>();
-        Tooltip.SetActive(false);
 
         Manager.AddRoom(this);
     }
    
-    public void OpenRoom()
+    public void SwitchState()
     {
-        LightIsOn = lightRoom ? true: false;    
+        activeRoom = !lightRoom;
         
     }
     public void SetRoom()
     {
-
+        if(activeRoom)
+        {
+            lightRoom.SetActive(true);
+        }
+        else
+        {
+            lightRoom.SetActive(false);
+        }
     }
 }
