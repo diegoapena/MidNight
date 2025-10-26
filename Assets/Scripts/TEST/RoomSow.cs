@@ -1,12 +1,17 @@
 using UnityEngine;
 
-public class RoomSow : MonoBehaviour ,IInteractable
+
+
+
+public class RoomSow : MonoBehaviour
 {
     [Header("References")]
     public RoomManagerSow Manager;
     public GameObject Tooltip;
 
     public GameObject lightRoom;
+
+    public bool LightIsOn;
     
     void Start()
     {
@@ -15,31 +20,14 @@ public class RoomSow : MonoBehaviour ,IInteractable
 
         Manager.AddRoom(this);
     }
-    public void Interact(GameObject observer)
+   
+    public void OpenRoom()
     {
-        lightRoom.SetActive(true);
+        LightIsOn = lightRoom ? true: false;    
+        
     }
-
-    public void OnPlayerEnter()
+    public void SetRoom()
     {
-        throw new System.NotImplementedException();
-    }
-
-    public void OnPlayerExit()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.tag =="Player")
-            Tooltip.SetActive(true);
-    }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.tag == "Player")
-            Tooltip.SetActive(false);
 
     }
-
 }

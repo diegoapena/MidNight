@@ -40,8 +40,8 @@ public class Player : MonoBehaviour
         {
             interactableObject.Interact(gameObject);
 
-            // Llamar al método del RoomManager para alternar el alpha
-            roomManager.FadeRoomAlpha();
+            // Llamar al método del RoomManagerSow para alternar el alpha
+            //roomManager.FadeRoomAlpha();
         }
     }
 

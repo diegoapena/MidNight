@@ -3,10 +3,14 @@ using UnityEngine.Events;
 
 public class BaseInteractable : MonoBehaviour, IInteractable
 {
-    public UnityEvent OnInteractTest = new ();
+    public GameObject tooltip;
+    public UnityEvent OnInteractTest;
+
+
+
     void Start()
     {
-
+        
     }
 
     public void Interact(GameObject observer)
@@ -15,15 +19,23 @@ public class BaseInteractable : MonoBehaviour, IInteractable
         print("Triggerr");
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        tooltip.SetActive(true);
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        tooltip.SetActive(false);
+    }
+
     public void OnPlayerEnter()
     {
-       // throw new System.NotImplementedException();
+        throw new System.NotImplementedException();
     }
 
     public void OnPlayerExit()
     {
-       // throw new System.NotImplementedException();
+        throw new System.NotImplementedException();
     }
- 
 }
     
