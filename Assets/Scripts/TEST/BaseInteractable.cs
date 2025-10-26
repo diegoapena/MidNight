@@ -10,7 +10,7 @@ public class BaseInteractable : MonoBehaviour, IInteractable
 
     void Start()
     {
-        
+        tooltip.SetActive(false);
     }
 
     public void Interact(GameObject observer)
