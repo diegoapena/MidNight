@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         Timer();
-        roomManager.CheckAndSpawnShadow(timeElapsed); //  nos ayuda a verificar sil tiempo ha alcanzado 60 segundos
+        
     }
 
     public void Timer()
