@@ -7,6 +7,10 @@ public class CamaraPlayer : MonoBehaviour
 
     void Update()
     {
+        CamaraPlayerLerp();
+    }
+   private void CamaraPlayerLerp()
+    {
         float x = Player.transform.position.x;
         float y = Player.transform.position.y;
         Vector3 targetPosition = new Vector3(x, y, transform.position.z);

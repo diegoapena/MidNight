@@ -39,9 +39,6 @@ public class Player : MonoBehaviour
         if (interactableObject != null && Input.GetKeyDown(KeyCode.E))
         {
             interactableObject.Interact(gameObject);
-
-            // Llamar al método del RoomManagerSow para alternar el alpha
-            //roomManager.FadeRoomAlpha();
         }
     }
 

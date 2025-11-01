@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - Room
+  - wall
   layers:
   - Default
   - TransparentFX
