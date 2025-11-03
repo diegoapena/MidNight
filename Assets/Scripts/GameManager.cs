@@ -1,20 +1,30 @@
 using UnityEngine;
 using TMPro;
 using System.Threading;
+using UnityEngine.VFX;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private TMP_Text timerText;
-    [SerializeField] private RoomManager roomManager; // tenemos la referencia al RoomManager
-    [SerializeField] private GameObject player; // tenemos la referencia al Player
+    [SerializeField] private RoomManager roomManager; // Referencia al RoomManager
+    [SerializeField] private GameObject player; // Referencia al Player
+    [SerializeField] private SpawnEnemys spawnEnemys; // Referencia al SpawnEnemys
 
     private float timeElapsed;
     private int minutes, seconds, cents;
+    private bool spawnStarted = false; // Bandera para iniciar el spawn
 
     private void Update()
     {
         Timer();
-       
+        timeElapsed += Time.deltaTime;
+
+        // Iniciar el spawn de enemigos a partir del segundo 60
+        if (timeElapsed >= 60f && !spawnStarted)
+        {
+            spawnStarted = true;
+            spawnEnemys.StartSpawning(); // Llamar al método para iniciar el spawn
+        }
     }
 
     public void Timer()

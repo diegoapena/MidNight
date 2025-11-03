@@ -16,7 +16,7 @@ public class BaseInteractable : MonoBehaviour, IInteractable
     public void Interact(GameObject observer)
     {
         OnInteractTest.Invoke();
-        print("Triggerr");
+       
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
