@@ -20,7 +20,7 @@ public class LinternaController : MonoBehaviour
 
         float angle = Mathf.Atan2(lastMoveDir.y, lastMoveDir.x) * Mathf.Rad2Deg;
 
-        // ✅ CORREGIDO
+        
         flashlight.transform.rotation = Quaternion.Lerp(
             flashlight.transform.rotation,
             Quaternion.Euler(0, 0, angle - 90f),
