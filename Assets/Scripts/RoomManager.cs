@@ -12,7 +12,7 @@ public class RoomManager : MonoBehaviour
 
     public void AddRoom(RoomSow room)
     {
-        if (!roomList.Contains(room))
+        if (!roomList.Contains(room)) // condición que nos ayuda a comprobar si el objeto room que se intenta agregar ya existe dentro de roomList
         {
             roomList.Add(room);
           

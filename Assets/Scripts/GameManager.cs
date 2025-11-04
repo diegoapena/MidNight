@@ -6,13 +6,13 @@ using UnityEngine.VFX;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private TMP_Text timerText;
-    [SerializeField] private RoomManager roomManager; // Referencia al RoomManager
-    [SerializeField] private GameObject player; // Referencia al Player
-    [SerializeField] private SpawnEnemys spawnEnemys; // Referencia al SpawnEnemys
+    [SerializeField] private RoomManager roomManager; // D: Referencia al RoomManager
+    [SerializeField] private GameObject player; // D: Referencia al Player
+    [SerializeField] private SpawnEnemys spawnEnemys; // D: Referencia al SpawnEnemys
 
     private float timeElapsed;
     private int minutes, seconds, cents;
-    private bool spawnStarted = false; // Bandera para iniciar el spawn
+    private bool spawnStarted = false; // D: Bandera para iniciar el spawn
 
     private void Update()
     {
