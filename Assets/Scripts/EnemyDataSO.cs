@@ -15,4 +15,5 @@ public class EnemyDataSO : ScriptableObject
     public int Damage;
     public float Speed;
     public Sprite Icon;
+    public GameObject Prefab;
 }
