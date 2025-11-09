@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 191903349}
   - component: {fileID: 191903348}
   m_Layer: 5
-  m_Name: Play (2)
+  m_Name: Exit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -202,7 +202,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 191903349}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1774183368}
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_MethodName: Exit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &191903349
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1258,7 +1270,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1402158338}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1774183368}
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_MethodName: Jugar
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1402158338
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1448,7 +1472,7 @@ GameObject:
   - component: {fileID: 1585781073}
   - component: {fileID: 1585781072}
   m_Layer: 5
-  m_Name: Play (1)
+  m_Name: Settings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1673,7 +1697,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1774183363}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4a7a1a838ca1c5419c3a1d64ad215b5, type: 3}
+  m_Script: {fileID: 11500000, guid: c07b8819b4a9e414fa36184f4e663ddc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1843058891

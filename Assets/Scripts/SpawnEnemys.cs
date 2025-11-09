@@ -64,8 +64,7 @@ public class SpawnEnemys : MonoBehaviour
 }
 
 // Clase auxiliar para rastrear la destrucción de enemigos
-// Aqui basicamente EnemyTracker no tiene sentido fuera  de SpawnEnemys, ya que depende directamente de este script para funcionar
-//por eso es mejor , mantenerla como una clase auxiliar dentro del mismo .
+
 public class EnemyTracker : MonoBehaviour
 {
     private SpawnEnemys spawnEnemys;
