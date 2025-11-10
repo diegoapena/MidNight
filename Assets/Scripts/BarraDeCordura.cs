@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class BarraDeCordura : MonoBehaviour
 {
     private Player player;
+    private int corduraActual = 100; // Valor inicial de la cordura
 
     [Header("Cordura")]
     public float maxSanity = 100f;
@@ -55,7 +56,15 @@ public class BarraDeCordura : MonoBehaviour
             TextoCordura.text = player.Sanity.ToString("f0");
     }
 
-    
+    public void ReducirCordura(int cantidad)
+    {
+        corduraActual -= cantidad;
+        corduraActual = Mathf.Clamp(corduraActual, 0, 100); // Asegurarse de que la cordura no sea menor a 0
+        Debug.Log($"Cordura reducida en {cantidad}. Cordura actual: {corduraActual}");
+
+        // Aquí puedes agregar lógica para actualizar la barra de cordura en la interfaz
+    }
+
     public void IniciarBajadaCordura()
     {
         corduraBajando = true;
