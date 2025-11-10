@@ -16,46 +16,48 @@ public class SpawnEnemys : MonoBehaviour
 
     [Header("Barra de Cordura")]
     public BarraDeCordura barraDeCordura; 
+
     private void Start()
     {
         
         enemyPrefabs = new GameObject[] { shadowPrefab, noisyPrefab, shapeshifterPrefab };
 
-        StartSpawning();
+        
     }
 
+    
     public void StartSpawning()
     {
-        // Iniciar spawn repetitivo con intervalo aleatorio
         float initialDelay = Random.Range(1f, 5f);
         InvokeRepeating(nameof(SpawnEnemy), initialDelay, Random.Range(5f, 15f));
+        
     }
 
     private void SpawnEnemy()
     {
-        // Verificar si se alcanzó el límite de enemigos
+        // Verificar límite de enemigos
         if (currentEnemyCount >= maxEnemies) return;
 
-        // Elegir un prefab y un punto de spawn aleatorio
+        // Elegir prefab y punto de spawn aleatorio
         GameObject randomEnemy = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
         Transform randomSpawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
 
         // Instanciar el enemigo
         GameObject spawnedEnemy = Instantiate(randomEnemy, randomSpawnPoint.position, Quaternion.identity);
 
-        // Incrementar contador
+        // Incrementar contador de enemigos
         currentEnemyCount++;
         Debug.Log($"Spawned {randomEnemy.name} en {randomSpawnPoint.position}. Total enemigos: {currentEnemyCount}");
 
-        
+        // Activar bajada de cordura al aparecer cualquier enemigo
         if (barraDeCordura != null)
             barraDeCordura.IniciarBajadaCordura();
 
-        // Añadir tracker para decrementar el contador al destruirse el enemigo
+        // Añadir EnemyTracker para disminuir el contador al destruirse
         spawnedEnemy.AddComponent<EnemyTracker>().Initialize(this);
     }
 
-    // Reducir contador cuando un enemigo muere
+    
     public void OnEnemyDestroyed()
     {
         currentEnemyCount--;
