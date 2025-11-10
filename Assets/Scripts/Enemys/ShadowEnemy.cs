@@ -27,7 +27,7 @@ public class ShadowEnemy : BaseEntity
 
         Debug.Log("💀 Shadow murió.");
 
-        // Regenerar cordura del jugador
+        
         var player = FindFirstObjectByType<Player>();
         var barra = FindFirstObjectByType<BarraDeCordura>();
 
@@ -42,7 +42,7 @@ public class ShadowEnemy : BaseEntity
 
     public void DieByLight()
     {
-        // Puedes simplemente llamar a Die()
+        
         Die();
     }
 }
