@@ -9,48 +9,39 @@ public class BarraDeCordura : MonoBehaviour
     public float maxSanity = 100f;
     public float tiempoEntreBajas = 1f;
     private float temporizador = 0f;
+    private bool corduraBajando = false; 
 
     [Header("Interfaz")]
     public Image BarraCordura;
     public Text TextoCordura;
 
-    [Header("Pollutant")]
-    public GameObject pollutantPrefab; // Prefab del enemigo
-    private bool pollutantActivado = false;
-
     void Start()
     {
         player = GameObject.Find("Player")?.GetComponent<Player>();
-
         if (player == null)
         {
-            Debug.LogError(" No se encontró el objeto 'Player' o no tiene el script Player.");
+            Debug.LogError("No se encontró el Player");
             enabled = false;
             return;
         }
 
-        Debug.Log(" Player detectado correctamente");
+        ActualizarInterfaz();
     }
 
     void Update()
     {
         if (player == null) return;
 
-        temporizador += Time.deltaTime;
-
-
-        if (temporizador >= tiempoEntreBajas && player.Sanity > 0)
+        
+        if (corduraBajando && temporizador >= tiempoEntreBajas)
         {
-            player.Sanity -= 2f;
+            if (player.Sanity > 0)
+                player.Sanity -= 2f;
+
             temporizador = 0f;
         }
 
-
-        if (player.Sanity <= 0 && !pollutantActivado)
-        {
-            pollutantActivado = true;
-            ActivarPollutant();
-        }
+        temporizador += Time.deltaTime;
 
         ActualizarInterfaz();
     }
@@ -61,36 +52,13 @@ public class BarraDeCordura : MonoBehaviour
             BarraCordura.fillAmount = player.Sanity / maxSanity;
 
         if (TextoCordura != null)
-            TextoCordura.text = "+ " + player.Sanity.ToString("f0");
+            TextoCordura.text = player.Sanity.ToString("f0");
     }
 
-    void ActivarPollutant()
+    
+    public void IniciarBajadaCordura()
     {
-        if (pollutantPrefab == null)
-        {
-            Debug.LogWarning("⚠️ No se asignó el prefab del Pollutant en el Inspector.");
-            return;
-        }
-
-        Vector3 playerPos = player.transform.position;
-
-
-        Vector3 spawnPos = playerPos + new Vector3(1.5f, 0, 0);
-
-
-        GameObject pollutant = Instantiate(pollutantPrefab, spawnPos, Quaternion.identity);
-        Debug.Log("☣ Pollutant apareció junto al jugador en " + spawnPos);
-
-
-        pollutant.GetComponent<PollutantEnemy>().ActivarPollutant();
-    }
-    public void RestaurarCorduraTotal()
-    {
-        if (player != null)
-        {
-            player.Sanity = maxSanity;
-            ActualizarInterfaz();
-            Debug.Log("🧠 Cordura restaurada al 100%");
-        }
+        corduraBajando = true;
+        Debug.Log("Bajada de cordura activada");
     }
 }

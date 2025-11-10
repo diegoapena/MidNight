@@ -1,22 +1,24 @@
 ﻿using UnityEngine;
-using System.Collections.Generic;
 
 public class SpawnEnemys : MonoBehaviour
 {
-    public GameObject shadowPrefab;       // Prefab del enemigo Shadow
-    public GameObject noisyPrefab;        // Prefab del enemigo Noisy
-    public GameObject shapeshifterPrefab; // Prefab del enemigo Shapeshifter
-    public GameObject pollutantPrefab;    // Prefab del enemigo Pollutant (NO se usará aquí)
+    [Header("Prefabs de Enemigos")]
+    public GameObject shadowPrefab;
+    public GameObject noisyPrefab;
+    public GameObject shapeshifterPrefab;
 
-    public Transform[] spawnPoints; // Puntos de spawn para los enemigos
+    [Header("Puntos de Spawn")]
+    public Transform[] spawnPoints;
 
-    private GameObject[] enemyPrefabs; // Array para almacenar los prefabs de enemigos
-    private int currentEnemyCount = 0; // Contador de enemigos activos
-    private const int maxEnemies = 10; // Máximo número de enemigos permitidos
+    private GameObject[] enemyPrefabs;
+    private int currentEnemyCount = 0;
+    private const int maxEnemies = 10;
 
+    [Header("Barra de Cordura")]
+    public BarraDeCordura barraDeCordura; 
     private void Start()
     {
-        // ⚠️ Solo incluimos los enemigos normales, NO el Pollutant
+        
         enemyPrefabs = new GameObject[] { shadowPrefab, noisyPrefab, shapeshifterPrefab };
 
         StartSpawning();
@@ -24,39 +26,36 @@ public class SpawnEnemys : MonoBehaviour
 
     public void StartSpawning()
     {
-        // Iniciar el spawn repetitivo con un intervalo aleatorio
-        float initialDelay = Random.Range(1f, 5f); // Tiempo inicial aleatorio
+        // Iniciar spawn repetitivo con intervalo aleatorio
+        float initialDelay = Random.Range(1f, 5f);
         InvokeRepeating(nameof(SpawnEnemy), initialDelay, Random.Range(5f, 15f));
     }
 
     private void SpawnEnemy()
     {
         // Verificar si se alcanzó el límite de enemigos
-        if (currentEnemyCount >= maxEnemies)
-        {
-            Debug.Log("Límite de enemigos alcanzado. No se generarán más enemigos.");
-            return;
-        }
+        if (currentEnemyCount >= maxEnemies) return;
 
-        // Elegir un prefab aleatorio
+        // Elegir un prefab y un punto de spawn aleatorio
         GameObject randomEnemy = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
-
-        // Elegir un punto de spawn aleatorio
         Transform randomSpawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
 
         // Instanciar el enemigo
         GameObject spawnedEnemy = Instantiate(randomEnemy, randomSpawnPoint.position, Quaternion.identity);
 
-        // Incrementar el contador de enemigos
+        // Incrementar contador
         currentEnemyCount++;
+        Debug.Log($"Spawned {randomEnemy.name} en {randomSpawnPoint.position}. Total enemigos: {currentEnemyCount}");
 
-        Debug.Log($"Spawned {randomEnemy.name} at {randomSpawnPoint.position}. Total enemigos: {currentEnemyCount}");
+        
+        if (barraDeCordura != null)
+            barraDeCordura.IniciarBajadaCordura();
 
-        // Suscribirse al evento de destrucción del enemigo
+        // Añadir tracker para decrementar el contador al destruirse el enemigo
         spawnedEnemy.AddComponent<EnemyTracker>().Initialize(this);
     }
 
-    // Método para reducir el contador de enemigos cuando uno es destruido
+    // Reducir contador cuando un enemigo muere
     public void OnEnemyDestroyed()
     {
         currentEnemyCount--;
@@ -64,7 +63,7 @@ public class SpawnEnemys : MonoBehaviour
     }
 }
 
-// Clase auxiliar para rastrear la destrucción de enemigos
+
 public class EnemyTracker : MonoBehaviour
 {
     private SpawnEnemys spawnEnemys;
