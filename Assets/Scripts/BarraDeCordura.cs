@@ -38,14 +38,14 @@ public class BarraDeCordura : MonoBehaviour
 
         temporizador += Time.deltaTime;
 
-        
+
         if (temporizador >= tiempoEntreBajas && player.Sanity > 0)
         {
             player.Sanity -= 2f;
             temporizador = 0f;
         }
 
-       
+
         if (player.Sanity <= 0 && !pollutantActivado)
         {
             pollutantActivado = true;
@@ -74,14 +74,23 @@ public class BarraDeCordura : MonoBehaviour
 
         Vector3 playerPos = player.transform.position;
 
-        
+
         Vector3 spawnPos = playerPos + new Vector3(1.5f, 0, 0);
 
-        
+
         GameObject pollutant = Instantiate(pollutantPrefab, spawnPos, Quaternion.identity);
         Debug.Log("☣ Pollutant apareció junto al jugador en " + spawnPos);
 
-        
+
         pollutant.GetComponent<PollutantEnemy>().ActivarPollutant();
+    }
+    public void RestaurarCorduraTotal()
+    {
+        if (player != null)
+        {
+            player.Sanity = maxSanity;
+            ActualizarInterfaz();
+            Debug.Log("🧠 Cordura restaurada al 100%");
+        }
     }
 }

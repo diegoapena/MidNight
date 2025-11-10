@@ -3,69 +3,46 @@ using UnityEngine.Rendering.Universal;
 
 public class ShadowEnemy : BaseEntity
 {
-    private Transform player;
-    public float detectionRange = 10f;
-    public float speedMultiplier = 1.5f;
-
-    private Light2D flashlight;
     private bool isDead = false;
-    private BarraDeCordura barraCordura;
 
-    protected new void Start()
+    protected override void Start()
     {
         base.Start();
-
-        player = GameObject.FindGameObjectWithTag("Player")?.transform;
-        flashlight = FindFirstObjectByType<Light2D>();
-        barraCordura = FindFirstObjectByType<BarraDeCordura>();
-
-       
     }
 
-    private void Update()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (isDead || player == null) return;
+        if (isDead) return;
 
-        float distance = Vector2.Distance(transform.position, player.position);
-
-        // Persigue al jugador
-        if (distance < detectionRange)
+        if (collision.gameObject.CompareTag("Player"))
         {
-            transform.position = Vector2.MoveTowards(
-                transform.position,
-                player.position,
-                (speed * speedMultiplier) * Time.deltaTime
-            );
-        }
-
-        // Si la linterna lo apunta → muere
-        if (flashlight != null && flashlight.enabled)
-        {
-            Vector2 dirToEnemy = (transform.position - flashlight.transform.position).normalized;
-            float angle = Vector2.Angle(-flashlight.transform.up, dirToEnemy);
-
-            if (angle < 30f && distance < flashlight.pointLightOuterRadius)
-            {
-                Die();
-            }
+            Die();
         }
     }
 
-    private void Die()
+    public void Die()
     {
         if (isDead) return;
         isDead = true;
 
-        Debug.Log("💀 Shadow destruido por la linterna.");
+        Debug.Log("💀 Shadow murió.");
 
-        // Restaura la cordura al 100%
-        if (barraCordura != null)
+        // Regenerar cordura del jugador
+        var player = FindFirstObjectByType<Player>();
+        var barra = FindFirstObjectByType<BarraDeCordura>();
+
+        if (player != null && barra != null)
         {
-            var playerScript = GameObject.FindGameObjectWithTag("Player")?.GetComponent<Player>();
-            if (playerScript != null)
-                playerScript.Sanity = barraCordura.maxSanity;
+            player.Sanity = barra.maxSanity;
+            Debug.Log("✨ Cordura regenerada al máximo.");
         }
 
         Destroy(gameObject);
+    }
+
+    public void DieByLight()
+    {
+        // Puedes simplemente llamar a Die()
+        Die();
     }
 }

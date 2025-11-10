@@ -18,4 +18,11 @@ public class BaseEntity : MonoBehaviour
         anim = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
     }
+
+protected virtual void Die()
+    {
+        
+        Debug.Log($"{gameObject.name} ha muerto (BaseEntity)");
+        Destroy(gameObject);
+    }
 }
