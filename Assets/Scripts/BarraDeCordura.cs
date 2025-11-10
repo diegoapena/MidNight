@@ -1,25 +1,87 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
+
 public class BarraDeCordura : MonoBehaviour
 {
     private Player player;
-    public float currentsanity = 50;
-    [Header("Interfaz")]
 
+    [Header("Cordura")]
+    public float maxSanity = 100f;
+    public float tiempoEntreBajas = 1f;
+    private float temporizador = 0f;
+
+    [Header("Interfaz")]
     public Image BarraCordura;
     public Text TextoCordura;
+
+    [Header("Pollutant")]
+    public GameObject pollutantPrefab; // Prefab del enemigo
+    private bool pollutantActivado = false;
+
     void Start()
     {
-        player = GameObject.Find("Player").GetComponent<Player>();
-        currentsanity = player.Sanity;
+        player = GameObject.Find("Player")?.GetComponent<Player>();
+
+        if (player == null)
+        {
+            Debug.LogError(" No se encontró el objeto 'Player' o no tiene el script Player.");
+            enabled = false;
+            return;
+        }
+
+        Debug.Log(" Player detectado correctamente");
     }
+
     void Update()
     {
+        if (player == null) return;
+
+        temporizador += Time.deltaTime;
+
+        
+        if (temporizador >= tiempoEntreBajas && player.Sanity > 0)
+        {
+            player.Sanity -= 2f;
+            temporizador = 0f;
+        }
+
+       
+        if (player.Sanity <= 0 && !pollutantActivado)
+        {
+            pollutantActivado = true;
+            ActivarPollutant();
+        }
+
         ActualizarInterfaz();
     }
-    public void ActualizarInterfaz()
+
+    void ActualizarInterfaz()
     {
-        BarraCordura.fillAmount = player.Sanity / currentsanity;
-        TextoCordura.text = "+ " + player.Sanity.ToString("f0");
+        if (BarraCordura != null)
+            BarraCordura.fillAmount = player.Sanity / maxSanity;
+
+        if (TextoCordura != null)
+            TextoCordura.text = "+ " + player.Sanity.ToString("f0");
+    }
+
+    void ActivarPollutant()
+    {
+        if (pollutantPrefab == null)
+        {
+            Debug.LogWarning("⚠️ No se asignó el prefab del Pollutant en el Inspector.");
+            return;
+        }
+
+        Vector3 playerPos = player.transform.position;
+
+        
+        Vector3 spawnPos = playerPos + new Vector3(1.5f, 0, 0);
+
+        
+        GameObject pollutant = Instantiate(pollutantPrefab, spawnPos, Quaternion.identity);
+        Debug.Log("☣ Pollutant apareció junto al jugador en " + spawnPos);
+
+        
+        pollutant.GetComponent<PollutantEnemy>().ActivarPollutant();
     }
 }

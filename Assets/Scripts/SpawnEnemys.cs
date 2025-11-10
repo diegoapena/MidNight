@@ -1,23 +1,24 @@
-using UnityEngine;
+Ôªøusing UnityEngine;
 using System.Collections.Generic;
 
 public class SpawnEnemys : MonoBehaviour
 {
-    public GameObject shadowPrefab; // Prefab del enemigo Shadow
-    public GameObject noisyPrefab; // Prefab del enemigo Noisy
+    public GameObject shadowPrefab;       // Prefab del enemigo Shadow
+    public GameObject noisyPrefab;        // Prefab del enemigo Noisy
     public GameObject shapeshifterPrefab; // Prefab del enemigo Shapeshifter
-    public GameObject pollutantPrefab; // Prefab del enemigo Pollutant
+    public GameObject pollutantPrefab;    // Prefab del enemigo Pollutant (NO se usar√° aqu√≠)
 
     public Transform[] spawnPoints; // Puntos de spawn para los enemigos
 
     private GameObject[] enemyPrefabs; // Array para almacenar los prefabs de enemigos
     private int currentEnemyCount = 0; // Contador de enemigos activos
-    private const int maxEnemies = 10; // M·ximo n˙mero de enemigos permitidos
+    private const int maxEnemies = 10; // M√°ximo n√∫mero de enemigos permitidos
 
     private void Start()
     {
-        // Inicializar el array de prefabs
-        enemyPrefabs = new GameObject[] { shadowPrefab, noisyPrefab, shapeshifterPrefab, pollutantPrefab };
+        // ‚ö†Ô∏è Solo incluimos los enemigos normales, NO el Pollutant
+        enemyPrefabs = new GameObject[] { shadowPrefab, noisyPrefab, shapeshifterPrefab };
+
         StartSpawning();
     }
 
@@ -30,10 +31,10 @@ public class SpawnEnemys : MonoBehaviour
 
     private void SpawnEnemy()
     {
-        // Verificar si se alcanzÛ el lÌmite de enemigos
+        // Verificar si se alcanz√≥ el l√≠mite de enemigos
         if (currentEnemyCount >= maxEnemies)
         {
-            Debug.Log("LÌmite de enemigos alcanzado. No se generar·n m·s enemigos.");
+            Debug.Log("L√≠mite de enemigos alcanzado. No se generar√°n m√°s enemigos.");
             return;
         }
 
@@ -51,11 +52,11 @@ public class SpawnEnemys : MonoBehaviour
 
         Debug.Log($"Spawned {randomEnemy.name} at {randomSpawnPoint.position}. Total enemigos: {currentEnemyCount}");
 
-        // Suscribirse al evento de destrucciÛn del enemigo
+        // Suscribirse al evento de destrucci√≥n del enemigo
         spawnedEnemy.AddComponent<EnemyTracker>().Initialize(this);
     }
 
-    // MÈtodo para reducir el contador de enemigos cuando uno es destruido
+    // M√©todo para reducir el contador de enemigos cuando uno es destruido
     public void OnEnemyDestroyed()
     {
         currentEnemyCount--;
@@ -63,8 +64,7 @@ public class SpawnEnemys : MonoBehaviour
     }
 }
 
-// Clase auxiliar para rastrear la destrucciÛn de enemigos
-
+// Clase auxiliar para rastrear la destrucci√≥n de enemigos
 public class EnemyTracker : MonoBehaviour
 {
     private SpawnEnemys spawnEnemys;

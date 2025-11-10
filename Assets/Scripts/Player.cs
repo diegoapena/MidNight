@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
     public InputSystem_Actions input;
     [SerializeField] private Vector2 moveInput;
     public float speed = 5f;
-    public int Sanity = 100;
+    public float Sanity = 100f; // 👈 cambiado a float
     private IInteractable interactableObject;
     public GameObject InteractText;
     [SerializeField] private RoomManager roomManager;

@@ -21,8 +21,8 @@ public class RoomSow : MonoBehaviour
 
     void Start()
     {
-        // Cambiado a FindObjectOfType para evitar errores
-        Manager = FindObjectOfType<RoomManager>();
+        // Usar FindFirstObjectByType en vez de FindObjectOfType (no obsoleto)
+        Manager = Object.FindFirstObjectByType<RoomManager>();
 
         if (Manager != null)
         {
@@ -45,24 +45,25 @@ public class RoomSow : MonoBehaviour
         switch (State)
         {
             case RoomState.None:
+                // Implementar si hace falta
                 break;
             case RoomState.LightOn:
-                
+                // Implementar si hace falta
                 break;
             case RoomState.LightOff:
+                // Implementar si hace falta
                 break;
             case RoomState.Haunted:
+                // Implementar si hace falta
                 break;
             default:
                 break;
         }
-        if (activeRoom)
-        {
-            lightRoom.SetActive(true);
-        }
+
+        // Activar/desactivar la luz de la habitación de forma segura
+        if (lightRoom != null)
+            lightRoom.SetActive(activeRoom);
         else
-        {
-            lightRoom.SetActive(false);
-        }
+            Debug.LogWarning($"RoomSow ({name}): lightRoom no asignado en el Inspector.");
     }
 }
