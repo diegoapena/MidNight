@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyName: Noisy
   ID: 0
-  Health: 2
+  Health: 0
   Damage: 2
-  Speed: 3
+  LevelOfThreat: 2
   Icon: {fileID: 0}
-  Prefab: {fileID: 7682249189238518448, guid: bdb037ea67e50074a8c18b4fbb6ed6ce, type: 3}
+  Description: "\xBFEscuchaste eso? Algo se cay\xF3\u2026 \xBFo se movi\xF3 solo?"

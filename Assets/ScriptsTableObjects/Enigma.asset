@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e163adf942339f24ca422c66b4ccf249, type: 3}
-  m_Name: Shadow
+  m_Name: Enigma
   m_EditorClassIdentifier: 
-  EnemyName: Shadow
+  EnemyName: ???
   ID: 0
-  Health: 2
-  Damage: 2
-  LevelOfThreat: 1
+  Health: 0
+  Damage: 0
+  LevelOfThreat: 5
   Icon: {fileID: 0}
-  Description: "Ves algo por ah\xED\u2026 \xBFser\xE1 una sombra en la esquina?"
+  Description: "Est\xE1s viendo cosas\u2026 pero nadie m\xE1s las ve. \xBFEst\xE1s
+    seguro de que son reales?"

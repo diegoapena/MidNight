@@ -1,24 +1,23 @@
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class BaseEnemy : MonoBehaviour
+
 {
-    private string enemyName;
-    private int health;
-    private int damage;
-    private float speed;
+    [SerializeField] private EnemyDataSO entities;
+    [SerializeField] private TextMeshProUGUI nombre;
+    //[SerializeField] private TextMeshProUGUI vida;
+    [SerializeField] private TextMeshProUGUI levelOfThreat;
+    //[SerializeField] private TextMeshProUGUI ataque;
+    [SerializeField] private TextMeshProUGUI descripcion;
+    //[SerializeField] private Image cara;
 
-    private BarraDeCordura barraDeCordura; // Referencia al script de la barra de cordura
-
-    public void Initialize(EnemyDataSO data)
+    private void Start()
     {
-        enemyName = data.EnemyName;
-        health = data.Health;
-        damage = data.Damage;
-        speed = data.Speed;
-
-        Debug.Log($"Iniciado enemigo: {enemyName} con {health} de salud, {damage} de daño y {speed} de velocidad.");
-
-      
-      
+        nombre.text = entities.EnemyName;
+        levelOfThreat.text = entities.LevelOfThreat.ToString();
+        descripcion.text = entities.Description;
+       // cara.sprite = entities.Icon;
     }
 }
