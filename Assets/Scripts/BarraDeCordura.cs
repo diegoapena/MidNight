@@ -37,12 +37,12 @@ public class BarraDeCordura : MonoBehaviour
         if (corduraBajando && temporizador >= tiempoEntreBajas)
         {
             if (player.Sanity > 0)
-                player.Sanity -= 2f;
+                player.Sanity -= 1f;
 
             temporizador = 0f;
         }
 
-        temporizador += Time.deltaTime;
+        temporizador += Time.deltaTime; 
 
         ActualizarInterfaz();
     }

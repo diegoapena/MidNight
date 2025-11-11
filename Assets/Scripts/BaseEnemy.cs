@@ -18,17 +18,7 @@ public class BaseEnemy : MonoBehaviour
 
         Debug.Log($"Iniciado enemigo: {enemyName} con {health} de salud, {damage} de daño y {speed} de velocidad.");
 
-        // Buscar la barra de cordura en la escena
-        barraDeCordura = FindObjectOfType<BarraDeCordura>();
-
-        // Reducir la cordura del jugador
-        if (barraDeCordura != null)
-        {
-            barraDeCordura.ReducirCordura(1); // Reducir la cordura en 10 puntos (puedes ajustar este valor)
-        }
-        else
-        {
-            Debug.LogError("No se encontró el script BarraDeCordura en la escena.");
-        }
+      
+      
     }
 }
