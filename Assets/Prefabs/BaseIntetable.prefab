@@ -27,15 +27,15 @@ RectTransform:
   m_GameObject: {fileID: 4153175704288384081}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.25316456, y: 0.285266, z: 1}
+  m_LocalScale: {x: 0.6, y: 0.285266, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6912322235189701874}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.11, y: 0.187}
-  m_SizeDelta: {x: 20, y: 5}
+  m_AnchoredPosition: {x: 9.21, y: 0.58}
+  m_SizeDelta: {x: 21.661, y: 3.9944}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &4104861539968546881
 MeshRenderer:
@@ -138,8 +138,8 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 15.922753, w: 3.9089813}
+  m_margin: {x: -9.904743, y: 0, z: 15.922753, w: 0.5055649}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   _SortingLayer: 0
@@ -205,9 +205,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5949906493821859888}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.48, y: -8.25, z: 0}
-  m_LocalScale: {x: 1.8055451, y: 1.8186535, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 16.1, y: -8.02, z: 0.9933127}
+  m_LocalScale: {x: 0.30982903, y: 0.7701997, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8888486558826489024}
@@ -256,7 +256,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
