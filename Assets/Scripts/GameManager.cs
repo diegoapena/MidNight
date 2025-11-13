@@ -23,7 +23,7 @@ private void Update()
     {
         spawnStarted = true;
         spawnEnemys.StartSpawning();
-        Debug.Log("✨ Spawn de enemigos iniciado al minuto 1");
+        Debug.Log(" Spawn de enemigos iniciado al minuto 1");
     }
 }
 
