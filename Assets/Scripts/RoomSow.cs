@@ -16,6 +16,7 @@ public class RoomSow : MonoBehaviour
     public RoomState State;
 
     public GameObject lightRoom;
+    public GameObject lightRoom1;
 
     public bool activeRoom = false; // Lo ideal sería que sea un enum
 
@@ -63,6 +64,10 @@ public class RoomSow : MonoBehaviour
         // Activar/desactivar la luz de la habitación de forma segura
         if (lightRoom != null)
             lightRoom.SetActive(activeRoom);
+        else
+            Debug.LogWarning($"RoomSow ({name}): lightRoom no asignado en el Inspector.");
+        if (lightRoom1 != null)
+            lightRoom1.SetActive(activeRoom);
         else
             Debug.LogWarning($"RoomSow ({name}): lightRoom no asignado en el Inspector.");
     }
