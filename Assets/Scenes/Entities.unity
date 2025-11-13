@@ -515,7 +515,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa23aca7c0a8f6d42839ab4de39e74df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entities: {fileID: 11400000, guid: f14b9030719e8ea48af942d01a994d89, type: 2}
+  entities: {fileID: 11400000, guid: c0d72a60a53a08a4a8d6c97e259720be, type: 2}
   nombre: {fileID: 1960446075}
   levelOfThreat: {fileID: 140206869}
   descripcion: {fileID: 668036143}
