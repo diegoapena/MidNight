@@ -7,9 +7,9 @@ public class Player : MonoBehaviour
     public InputSystem_Actions input;
     [SerializeField] private Vector2 moveInput;
     public float speed = 5f;
-    public float Sanity = 100f; // 👈 cambiado a float
+    public float Sanity = 100f; 
     private IInteractable interactableObject;
-    public GameObject InteractText;
+
     [SerializeField] private RoomManager roomManager;
 
     private void OnEnable()
@@ -47,7 +47,7 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<IInteractable>() != null)
         {
-            InteractText.SetActive(true);
+            
             interactableObject = collision.gameObject.GetComponent<IInteractable>();
         }
     }
@@ -58,7 +58,7 @@ public class Player : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        InteractText.SetActive(false);
+        
         interactableObject = null;
     }
 

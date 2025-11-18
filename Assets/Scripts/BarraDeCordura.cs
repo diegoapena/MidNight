@@ -31,9 +31,14 @@ public class BarraDeCordura : MonoBehaviour
 
     void Update()
     {
+        PlayerSanity();
+        ActualizarInterfaz();
+    }
+    void PlayerSanity()
+    {
         if (player == null) return;
 
-        
+
         if (corduraBajando && temporizador >= tiempoEntreBajas)
         {
             if (player.Sanity > 0)
@@ -42,11 +47,9 @@ public class BarraDeCordura : MonoBehaviour
             temporizador = 0f;
         }
 
-        temporizador += Time.deltaTime; 
+        temporizador += Time.deltaTime;
 
-        ActualizarInterfaz();
     }
-
     void ActualizarInterfaz()
     {
         if (BarraCordura != null)

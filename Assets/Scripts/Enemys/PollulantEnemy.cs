@@ -22,11 +22,15 @@ public class PollutantEnemy : BaseEntity
     {
         jugador = GameObject.FindGameObjectWithTag("Player").transform;
         persiguiendo = true;
-        Debug.Log("☣ Pollutant comenzó a perseguir al jugador.");
+        Debug.Log(" Pollutant comenzó a perseguir al jugador.");
         BloquearPuertas();
     }
 
     void Update()
+    {
+        PollutantRun();
+    }
+    void PollutantRun()
     {
         if (persiguiendo && jugador != null)
         {
@@ -37,12 +41,11 @@ public class PollutantEnemy : BaseEntity
             );
         }
     }
-
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            Debug.Log("☣ Pollutant atrapó al jugador. Fin del juego.");
+            Debug.Log("Pollutant atrapó al jugador. Fin del juego.");
             SceneManager.LoadScene(escenaFinal);
         }
     }
@@ -53,6 +56,6 @@ public class PollutantEnemy : BaseEntity
         foreach (var puerta in puertas)
             puerta.enabled = false;
 
-        Debug.Log("🚪 Todas las puertas han sido bloqueadas por Pollutant.");
+        Debug.Log(" Todas las puertas han sido bloqueadas por Pollutant.");
     }
 }
