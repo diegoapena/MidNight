@@ -11,7 +11,7 @@ public class EnemyDataSO : ScriptableObject
     public float LevelOfThreat;
     public Sprite Icon;
 
-    [TextArea(2, 2)]
+    [TextArea(2, 2)] 
     public string Description;
 
 }

@@ -25,7 +25,7 @@ public class ShadowEnemy : BaseEntity
         if (isDead) return;
         isDead = true;
 
-        Debug.Log("💀 Shadow murió.");
+        Debug.Log(" Shadow murió.");
 
         
         var player = FindFirstObjectByType<Player>();
