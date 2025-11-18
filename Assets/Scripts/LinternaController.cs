@@ -11,7 +11,12 @@ public class LinternaController : MonoBehaviour
     {
         RotateTowardsMouse(); // Hacer que la linterna apunte hacia el mouse
 
-       
+
+
+        //    Vector3 LinternDir = (mousePosition - flashlight.transform.position).normalized;
+        //   Vector3 EnemyDir = (enemy - transform.position).normalized;
+
+        // float dot = vector2.dot(dira,dirb)
     }
 
     private void RotateTowardsMouse()
@@ -33,7 +38,15 @@ public class LinternaController : MonoBehaviour
             Time.deltaTime * rotationSpeed
         );
 
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F))//  Eliminar
+        {
+            isOn = !isOn; // Alternar el estado de la linterna
+            flashlight.enabled = isOn; // Activar o desactivar la luz
+        }
+    }
+    public void SwitchLintern()
+    {
+        if (Input.GetKeyDown(KeyCode.F))//  Eliminar
         {
             isOn = !isOn; // Alternar el estado de la linterna
             flashlight.enabled = isOn; // Activar o desactivar la luz

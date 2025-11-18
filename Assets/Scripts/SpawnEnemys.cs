@@ -1,16 +1,17 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class SpawnEnemys : MonoBehaviour
 {
-    [Header("Prefabs de Enemigos")]
+  /*  [Header("Prefabs de Enemigos")]
     public GameObject shadowPrefab;
     public GameObject noisyPrefab;
-    public GameObject shapeshifterPrefab;
+    public GameObject shapeshifterPrefab;*/
 
     [Header("Puntos de Spawn")]
     public Transform[] spawnPoints;
 
-    private GameObject[] enemyPrefabs;
+    private List<EnemyTracker> enemyPrefabs;
     private int currentEnemyCount = 0;
     private const int maxEnemies = 10;
 
@@ -20,7 +21,7 @@ public class SpawnEnemys : MonoBehaviour
     private void Start()
     {
         
-        enemyPrefabs = new GameObject[] { shadowPrefab, noisyPrefab, shapeshifterPrefab };
+    
 
         
     }
@@ -39,11 +40,11 @@ public class SpawnEnemys : MonoBehaviour
         if (currentEnemyCount >= maxEnemies) return;
 
         // Elegir prefab y punto de spawn aleatorio
-        GameObject randomEnemy = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
+        EnemyTracker randomEnemy = enemyPrefabs[Random.Range(0, enemyPrefabs.Count)];
         Transform randomSpawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
 
         // Instanciar el enemigo
-        GameObject spawnedEnemy = Instantiate(randomEnemy, randomSpawnPoint.position, Quaternion.identity);
+        EnemyTracker spawnedEnemy = Instantiate(randomEnemy, randomSpawnPoint.position, Quaternion.identity);
 
         // Incrementar contador de enemigos
         currentEnemyCount++;
@@ -53,8 +54,7 @@ public class SpawnEnemys : MonoBehaviour
         if (barraDeCordura != null)
             barraDeCordura.IniciarBajadaCordura();
 
-        // Añadir EnemyTracker para disminuir el contador al destruirse
-        spawnedEnemy.AddComponent<EnemyTracker>().Initialize(this);
+        
     }
 
     
