@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     public InputSystem_Actions input;
+    private Animator animator;
     [SerializeField] private Vector2 moveInput;
     public float speed = 5f;
     public float Sanity = 100f; 
@@ -12,6 +13,12 @@ public class Player : MonoBehaviour
 
     [SerializeField] private RoomManager roomManager;
 
+    private void Awake()
+    {
+        input = new();
+        animator = GetComponent<Animator>();
+
+    }
     private void OnEnable()
     {
         input.Enable();
@@ -26,12 +33,13 @@ public class Player : MonoBehaviour
         input.Player.Move.performed -= OnMove;
         input.Player.Move.started -= OnMove;
         input.Disable();
+
+        animator.SetFloat("Horizontal", 3f);
+        animator.SetFloat("Vertical", 3f);
+        animator.SetFloat("Speed", 3f);
     }
 
-    private void Awake()
-    {
-        input = new();
-    }
+    
 
     private void Update()
     {

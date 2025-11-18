@@ -26,18 +26,6 @@ TextureImporter:
   - first:
       213: -3150006946948992623
     second: Character_4_7
-  - first:
-      213: -3582713455064011670
-    second: Character_4_8
-  - first:
-      213: -2402033653234648939
-    second: Character_4_9
-  - first:
-      213: -4687179124489028163
-    second: Character_4_10
-  - first:
-      213: 7834983732333111410
-    second: Character_4_11
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -70,7 +58,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -108,7 +96,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -136,12 +124,12 @@ TextureImporter:
       name: Character_4_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 15
-        width: 16
-        height: 17
+        x: 9
+        y: 197
+        width: 82
+        height: 103
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -158,12 +146,12 @@ TextureImporter:
       name: Character_4_1
       rect:
         serializedVersion: 2
-        x: 1
-        y: 31
-        width: 14
-        height: 17
+        x: 101
+        y: 96
+        width: 99
+        height: 100
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -180,12 +168,12 @@ TextureImporter:
       name: Character_4_2
       rect:
         serializedVersion: 2
-        x: 16
-        y: 15
-        width: 16
-        height: 17
+        x: 209
+        y: 197
+        width: 82
+        height: 94
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -202,12 +190,12 @@ TextureImporter:
       name: Character_4_3
       rect:
         serializedVersion: 2
-        x: 17
-        y: 31
-        width: 14
-        height: 17
+        x: 309
+        y: 197
+        width: 82
+        height: 94
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -224,12 +212,12 @@ TextureImporter:
       name: Character_4_4
       rect:
         serializedVersion: 2
-        x: 32
-        y: 15
-        width: 16
-        height: 16
+        x: 202
+        y: 96
+        width: 98
+        height: 101
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -246,12 +234,12 @@ TextureImporter:
       name: Character_4_5
       rect:
         serializedVersion: 2
-        x: 33
-        y: 31
-        width: 14
-        height: 16
+        x: 101
+        y: 0
+        width: 99
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -268,12 +256,12 @@ TextureImporter:
       name: Character_4_6
       rect:
         serializedVersion: 2
-        x: 48
-        y: 15
-        width: 16
-        height: 16
+        x: 303
+        y: 96
+        width: 97
+        height: 101
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -290,12 +278,12 @@ TextureImporter:
       name: Character_4_7
       rect:
         serializedVersion: 2
-        x: 49
-        y: 31
-        width: 14
-        height: 16
+        x: 304
+        y: 0
+        width: 96
+        height: 95
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -308,99 +296,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: Character_4_8
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a6ca5ea3815a74ec0800000000000000
-      internalID: -3582713455064011670
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Character_4_9
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5983a607e134aaed0800000000000000
-      internalID: -2402033653234648939
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Character_4_10
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 0
-        width: 16
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: dbd74368b6bc3feb0800000000000000
-      internalID: -4687179124489028163
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Character_4_11
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 0
-        width: 16
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 278edaa61347bbc60800000000000000
-      internalID: 7834983732333111410
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: c2f857ae502469044888cf9f59f4215f
     internalID: 0
     vertices: []
     indices: 
@@ -412,16 +312,12 @@ TextureImporter:
     nameFileIdTable:
       Character_4_0: -4186632806901556356
       Character_4_1: 7028065266210819738
-      Character_4_10: -4687179124489028163
-      Character_4_11: 7834983732333111410
       Character_4_2: 6088003558364044719
       Character_4_3: 4830274532145054415
       Character_4_4: -8975743913126770095
       Character_4_5: 1513714886325981925
       Character_4_6: -608090692386983898
       Character_4_7: -3150006946948992623
-      Character_4_8: -3582713455064011670
-      Character_4_9: -2402033653234648939
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

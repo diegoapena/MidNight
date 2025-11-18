@@ -26,18 +26,6 @@ TextureImporter:
   - first:
       213: 8940059720959691286
     second: Character_4_Run_7
-  - first:
-      213: 6018401344574053172
-    second: Character_4_Run_8
-  - first:
-      213: 585786936396719410
-    second: Character_4_Run_9
-  - first:
-      213: 7826886843958296715
-    second: Character_4_Run_10
-  - first:
-      213: 1271896112815382688
-    second: Character_4_Run_11
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -136,12 +124,12 @@ TextureImporter:
       name: Character_4_Run_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 15
-        width: 16
-        height: 17
+        x: 9
+        y: 197
+        width: 82
+        height: 103
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -158,12 +146,12 @@ TextureImporter:
       name: Character_4_Run_1
       rect:
         serializedVersion: 2
-        x: 1
-        y: 31
-        width: 14
-        height: 17
+        x: 100
+        y: 0
+        width: 98
+        height: 97
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -180,12 +168,12 @@ TextureImporter:
       name: Character_4_Run_2
       rect:
         serializedVersion: 2
-        x: 16
-        y: 15
-        width: 16
-        height: 17
+        x: 208
+        y: 192
+        width: 84
+        height: 100
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -202,12 +190,12 @@ TextureImporter:
       name: Character_4_Run_3
       rect:
         serializedVersion: 2
-        x: 17
-        y: 31
-        width: 14
-        height: 17
+        x: 308
+        y: 195
+        width: 84
+        height: 97
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -224,12 +212,12 @@ TextureImporter:
       name: Character_4_Run_4
       rect:
         serializedVersion: 2
-        x: 32
-        y: 15
-        width: 16
-        height: 16
+        x: 103
+        y: 97
+        width: 95
+        height: 99
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -246,12 +234,12 @@ TextureImporter:
       name: Character_4_Run_5
       rect:
         serializedVersion: 2
-        x: 33
-        y: 31
-        width: 14
-        height: 16
+        x: 201
+        y: 0
+        width: 102
+        height: 92
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -268,12 +256,12 @@ TextureImporter:
       name: Character_4_Run_6
       rect:
         serializedVersion: 2
-        x: 48
-        y: 15
-        width: 16
-        height: 16
+        x: 301
+        y: 93
+        width: 99
+        height: 98
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -290,12 +278,12 @@ TextureImporter:
       name: Character_4_Run_7
       rect:
         serializedVersion: 2
-        x: 49
-        y: 31
-        width: 14
-        height: 16
+        x: 301
+        y: 0
+        width: 99
+        height: 92
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -308,99 +296,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: Character_4_Run_8
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 43bd113d228a58350800000000000000
-      internalID: 6018401344574053172
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Character_4_Run_9
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 235adf17d12212800800000000000000
-      internalID: 585786936396719410
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Character_4_Run_10
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 0
-        width: 16
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b80005fad10be9c60800000000000000
-      internalID: 7826886843958296715
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Character_4_Run_11
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 0
-        width: 16
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 0a0af8b96cea6a110800000000000000
-      internalID: 1271896112815382688
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: b9210110192d1f34c9a860978f3cc784
     internalID: 0
     vertices: []
     indices: 
@@ -412,16 +312,12 @@ TextureImporter:
     nameFileIdTable:
       Character_4_Run_0: 1215184139901039815
       Character_4_Run_1: 6614239867289775354
-      Character_4_Run_10: 7826886843958296715
-      Character_4_Run_11: 1271896112815382688
       Character_4_Run_2: 5660113958392633544
       Character_4_Run_3: -2402795457024415041
       Character_4_Run_4: 2920954738472509403
       Character_4_Run_5: 1767749637832064032
       Character_4_Run_6: 2674329719539243771
       Character_4_Run_7: 8940059720959691286
-      Character_4_Run_8: 6018401344574053172
-      Character_4_Run_9: 585786936396719410
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
