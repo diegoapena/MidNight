@@ -14,11 +14,14 @@ public class Player : MonoBehaviour
     private Animator animator;
     [SerializeField] private Vector2 moveInput;
     public float speed = 5f;
-    public float Sanity = 100f; 
+    public float Sanity = 100f;
     private IInteractable interactableObject;
     private Vector2 movementInput;
+    public Action OnLinternaPerformed;
 
     [SerializeField] private RoomManager roomManager;
+    [SerializeField] private GameObject linterna; // Referencia al objeto de la linterna
+    private bool linternaEncendida = false; // Estado de la linterna
 
     // Definición para de StateAnimation
     public AnimationState StateAnimation { get; private set; } = AnimationState.None;
@@ -35,6 +38,9 @@ public class Player : MonoBehaviour
         input.Player.Move.canceled += OnMove;
         input.Player.Move.performed += OnMove;
         input.Player.Move.started += OnMove;
+
+        // Vincula la acción "Linterna"
+        input.Player.Linterna.performed += OnLinterna;
     }
 
     private void OnDisable()
@@ -42,6 +48,10 @@ public class Player : MonoBehaviour
         input.Player.Move.canceled -= OnMove;
         input.Player.Move.performed -= OnMove;
         input.Player.Move.started -= OnMove;
+
+        // Desvincula la acción "Linterna"
+        input.Player.Linterna.performed -= OnLinterna;
+
         input.Disable();
 
         animator.SetFloat("Horizontal", 3f);
@@ -66,13 +76,14 @@ public class Player : MonoBehaviour
     {
         moveInput = context.ReadValue<Vector2>();
 
-        
+
         if (moveInput != Vector2.zero)
         {
             StateAnimation = AnimationState.IdleRun;
         }
-        
+
     }
+   
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.GetComponent<IInteractable>() != null)
@@ -111,5 +122,18 @@ public class Player : MonoBehaviour
             animator.SetFloat("Vertical", 0);
             animator.SetFloat("Speed", 0);
         }
+    }
+
+    private void OnLinterna(InputAction.CallbackContext context)
+    {
+        linternaEncendida = !linternaEncendida; // Alternar el estado de la linterna
+
+        if (linterna != null)
+        {
+            linterna.SetActive(linternaEncendida); // Activar o desactivar la linterna
+        }
+
+        Debug.Log(linternaEncendida ? "Linterna encendida" : "Linterna apagada");
+        OnLinternaPerformed?.Invoke();
     }
 }

@@ -33,10 +33,9 @@ public class LinternaController : MonoBehaviour
             Time.deltaTime * rotationSpeed
         );
 
-        if (Input.GetKeyDown(KeyCode.F))
-        {
+        
+        
             isOn = !isOn; // Alternar el estado de la linterna
             flashlight.enabled = isOn; // Activar o desactivar la luz
         }
     }
-}
