@@ -18,7 +18,6 @@ public class Player : MonoBehaviour
     private IInteractable interactableObject;
     private Vector2 movementInput;
 
-    [SerializeField] private RoomManager roomManager;
 
     // Definición para de StateAnimation
     public AnimationState StateAnimation { get; private set; } = AnimationState.None;
@@ -27,14 +26,6 @@ public class Player : MonoBehaviour
     {
         input = new();
         animator = GetComponent<Animator>();
-    }
-
-    private void OnEnable()
-    {
-        input.Enable();
-        input.Player.Move.canceled += OnMove;
-        input.Player.Move.performed += OnMove;
-        input.Player.Move.started += OnMove;
     }
 
     private void OnDisable()
@@ -48,6 +39,14 @@ public class Player : MonoBehaviour
         animator.SetFloat("Vertical", 3f);
         animator.SetFloat("Speed", 3f);
     }
+    private void OnEnable()
+    {
+        input.Enable();
+        input.Player.Move.canceled += OnMove;
+        input.Player.Move.performed += OnMove;
+        input.Player.Move.started += OnMove;
+    }
+
 
     private void Update()
     {
