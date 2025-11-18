@@ -4,21 +4,31 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
+    public enum AnimationState
+    {
+        IdleRun,
+        None
+    }
+
     public InputSystem_Actions input;
     private Animator animator;
     [SerializeField] private Vector2 moveInput;
     public float speed = 5f;
     public float Sanity = 100f; 
     private IInteractable interactableObject;
+    private Vector2 movementInput;
 
     [SerializeField] private RoomManager roomManager;
+
+    // Definición para de StateAnimation
+    public AnimationState StateAnimation { get; private set; } = AnimationState.None;
 
     private void Awake()
     {
         input = new();
         animator = GetComponent<Animator>();
-
     }
+
     private void OnEnable()
     {
         input.Enable();
@@ -39,23 +49,35 @@ public class Player : MonoBehaviour
         animator.SetFloat("Speed", 3f);
     }
 
-    
-
     private void Update()
     {
-        transform.position += (Vector3)moveInput * speed * Time.deltaTime;
-
+        LuzCuartos();
+        MovementMechanics();
+    }
+    private void LuzCuartos()
+    {
         if (interactableObject != null && Input.GetKeyDown(KeyCode.E))
         {
             interactableObject.Interact(gameObject);
         }
     }
 
+    private void OnMove(InputAction.CallbackContext context)
+    {
+        moveInput = context.ReadValue<Vector2>();
+
+        
+        if (moveInput != Vector2.zero)
+        {
+            StateAnimation = AnimationState.IdleRun;
+        }
+        
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.GetComponent<IInteractable>() != null)
         {
-            
+
             interactableObject = collision.gameObject.GetComponent<IInteractable>();
         }
     }
@@ -66,12 +88,28 @@ public class Player : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        
+
         interactableObject = null;
     }
 
-    private void OnMove(InputAction.CallbackContext context)
+    public void MovementMechanics()
     {
-        moveInput = context.ReadValue<Vector2>();
+        if (moveInput != Vector2.zero)
+        {
+            // Mover al personaje
+            transform.position += (Vector3)moveInput * speed * Time.deltaTime;
+
+            // Actualizar parámetros del Animator
+            animator.SetFloat("Horizontal", moveInput.x);
+            animator.SetFloat("Vertical", moveInput.y);
+            animator.SetFloat("Speed", moveInput.magnitude);
+        }
+        else
+        {
+            // Detener animaciones si no hay movimiento
+            animator.SetFloat("Horizontal", 0);
+            animator.SetFloat("Vertical", 0);
+            animator.SetFloat("Speed", 0);
+        }
     }
 }
