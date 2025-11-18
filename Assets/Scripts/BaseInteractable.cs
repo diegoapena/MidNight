@@ -30,12 +30,12 @@ public class BaseInteractable : MonoBehaviour, IInteractable
 
     public void OnPlayerEnter()
     {
-        throw new System.NotImplementedException();
+       
     }
 
     public void OnPlayerExit()
     {
-        throw new System.NotImplementedException();
+        
     }
 }
     
