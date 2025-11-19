@@ -2,11 +2,7 @@
 
 public class SpawnEnemys : MonoBehaviour
 {
-    [Header("Prefabs de Enemigos")]
-    public GameObject shadowPrefab;
-    public GameObject noisyPrefab;
-    public GameObject shapeshifterPrefab;
-
+   
     [Header("Puntos de Spawn")]
     public Transform[] spawnPoints;
 
@@ -20,7 +16,7 @@ public class SpawnEnemys : MonoBehaviour
     private void Start()
     {
         
-        enemyPrefabs = new GameObject[] { shadowPrefab, noisyPrefab, shapeshifterPrefab };
+        
 
         
     }
