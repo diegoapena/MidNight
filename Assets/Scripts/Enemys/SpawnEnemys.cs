@@ -2,80 +2,55 @@
 
 public class SpawnEnemys : MonoBehaviour
 {
-   
     [Header("Puntos de Spawn")]
     public Transform[] spawnPoints;
 
-    private GameObject[] enemyPrefabs;
+    [Header("Prefabs de Enemigos")]
+    public GameObject[] enemyPrefabs; 
+
     private int currentEnemyCount = 0;
     private const int maxEnemies = 10;
 
     [Header("Barra de Cordura")]
-    public BarraDeCordura barraDeCordura; 
+    public BarraDeCordura barraDeCordura;
 
-    private void Start()
-    {
-        
-        
-
-        
-    }
-
-    
     public void StartSpawning()
     {
         float initialDelay = Random.Range(1f, 5f);
         InvokeRepeating(nameof(SpawnEnemy), initialDelay, Random.Range(5f, 15f));
-        
     }
 
     private void SpawnEnemy()
     {
-        // Verificar límite de enemigos
         if (currentEnemyCount >= maxEnemies) return;
 
-        // Elegir prefab y punto de spawn aleatorio
+        // Elegir enemigo aleatorio
         GameObject randomEnemy = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
+
+        // Elegir punto aleatorio
         Transform randomSpawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
 
-        // Instanciar el enemigo
+        // Instanciar
         GameObject spawnedEnemy = Instantiate(randomEnemy, randomSpawnPoint.position, Quaternion.identity);
 
-        // Incrementar contador de enemigos
         currentEnemyCount++;
         Debug.Log($"Spawned {randomEnemy.name} en {randomSpawnPoint.position}. Total enemigos: {currentEnemyCount}");
 
-        // Activar bajada de cordura al aparecer cualquier enemigo
+        // Activar bajada de cordura
         if (barraDeCordura != null)
             barraDeCordura.IniciarBajadaCordura();
 
-        // Añadir EnemyTracker para disminuir el contador al destruirse
+        // Añadir tracker
         spawnedEnemy.AddComponent<EnemyTracker>().Initialize(this);
     }
 
-    
     public void OnEnemyDestroyed()
     {
         currentEnemyCount--;
         Debug.Log($"Enemigo destruido. Total enemigos: {currentEnemyCount}");
     }
-}
-
-
-public class EnemyTracker : MonoBehaviour
-{
-    private SpawnEnemys spawnEnemys;
-
-    public void Initialize(SpawnEnemys spawnEnemys)
+    private void Start()
     {
-        this.spawnEnemys = spawnEnemys;
-    }
-
-    private void OnDestroy()
-    {
-        if (spawnEnemys != null)
-        {
-            spawnEnemys.OnEnemyDestroyed();
-        }
+        StartSpawning();
     }
 }

@@ -20,9 +20,15 @@ public class PollutantEnemy : BaseEntity
 
     void Aparecer()
     {
-        jugador = GameObject.FindGameObjectWithTag("Player").transform;
+        // YA NO USES FIND — usamos el Singleton del Player
+        if (Player.Instance != null)
+        {
+            jugador = Player.Instance.transform;
+        }
+
         persiguiendo = true;
-        Debug.Log(" Pollutant comenzó a perseguir al jugador.");
+        Debug.Log("Pollutant comenzó a perseguir al jugador.");
+
         BloquearPuertas();
     }
 
@@ -30,6 +36,7 @@ public class PollutantEnemy : BaseEntity
     {
         PollutantRun();
     }
+
     void PollutantRun()
     {
         if (persiguiendo && jugador != null)
@@ -41,6 +48,7 @@ public class PollutantEnemy : BaseEntity
             );
         }
     }
+
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
@@ -52,10 +60,12 @@ public class PollutantEnemy : BaseEntity
 
     void BloquearPuertas()
     {
+        // ESTE SE QUEDA porque NO puedes hacer Singleton de TODAS las puertas
         BaseInteractable[] puertas = Object.FindObjectsByType<BaseInteractable>(FindObjectsSortMode.None);
+
         foreach (var puerta in puertas)
             puerta.enabled = false;
 
-        Debug.Log(" Todas las puertas han sido bloqueadas por Pollutant.");
+        Debug.Log("Todas las puertas han sido bloqueadas por Pollutant.");
     }
 }

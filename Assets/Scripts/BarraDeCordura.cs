@@ -4,13 +4,12 @@ using UnityEngine.UI;
 public class BarraDeCordura : MonoBehaviour
 {
     private Player player;
-    private int corduraActual = 100; // Valor inicial de la cordura
-
+    public static BarraDeCordura Instance;
     [Header("Cordura")]
     public float maxSanity = 100f;
     public float tiempoEntreBajas = 1f;
     private float temporizador = 0f;
-    private bool corduraBajando = false; 
+    private bool corduraBajando = false;
 
     [Header("Interfaz")]
     public Image BarraCordura;
@@ -26,6 +25,8 @@ public class BarraDeCordura : MonoBehaviour
             return;
         }
 
+       
+        player.Sanity = maxSanity;
         ActualizarInterfaz();
     }
 
@@ -34,10 +35,11 @@ public class BarraDeCordura : MonoBehaviour
         PlayerSanity();
         ActualizarInterfaz();
     }
+
+    
     void PlayerSanity()
     {
         if (player == null) return;
-
 
         if (corduraBajando && temporizador >= tiempoEntreBajas)
         {
@@ -48,8 +50,9 @@ public class BarraDeCordura : MonoBehaviour
         }
 
         temporizador += Time.deltaTime;
-
     }
+
+    
     void ActualizarInterfaz()
     {
         if (BarraCordura != null)
@@ -59,15 +62,20 @@ public class BarraDeCordura : MonoBehaviour
             TextoCordura.text = player.Sanity.ToString("f0");
     }
 
-    public void ReducirCordura(int cantidad)
+    
+    public void RestarCordura(float cantidad)
     {
-        corduraActual -= cantidad;
-        corduraActual = Mathf.Clamp(corduraActual, 0, 100); // Asegurarse de que la cordura no sea menor a 0
-        Debug.Log($"Cordura reducida en {cantidad}. Cordura actual: {corduraActual}");
+        player.Sanity -= cantidad;
 
-        // Aquí puedes agregar lógica para actualizar la barra de cordura en la interfaz
+        if (player.Sanity < 0)
+            player.Sanity = 0;
+
+        Debug.Log($"Cordura reducida en {cantidad}. Nueva cordura: {player.Sanity}");
+
+        ActualizarInterfaz();
     }
 
+    
     public void IniciarBajadaCordura()
     {
         corduraBajando = true;

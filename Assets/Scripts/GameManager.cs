@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
 
 private float timeElapsed;
 private int minutes, seconds, cents;
-private bool spawnStarted = false; // Bandera para iniciar el spawn
+private bool spawnStarted = false; 
 
 private void Update()
 {

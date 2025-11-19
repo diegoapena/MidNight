@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
         IdleRun,
         None
     }
-
+    public static Player Instance;
     public InputSystem_Actions input;
     private Animator animator;
     private Vector2 moveInput;
