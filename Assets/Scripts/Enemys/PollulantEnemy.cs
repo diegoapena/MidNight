@@ -20,7 +20,7 @@ public class PollutantEnemy : BaseEntity
 
     void Aparecer()
     {
-        // YA NO USES FIND — usamos el Singleton del Player
+        
         if (Player.Instance != null)
         {
             jugador = Player.Instance.transform;
