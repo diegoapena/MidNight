@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
-        // --------- SINGLETON CORRECTO ---------
+        
         if (Instance == null)
         {
             Instance = this;
@@ -66,7 +66,7 @@ public class Player : MonoBehaviour
         {
             if (linternaController == null)
             {
-                Debug.LogError("❌ No hay LinternaController asignado.");
+                Debug.LogError("No hay LinternaController asignado.");
             }
             else
             {

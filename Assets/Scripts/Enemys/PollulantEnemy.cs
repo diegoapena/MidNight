@@ -26,7 +26,7 @@ public class PollutantEnemy : MonoBehaviour
 
         if (jugador == null)
         {
-            Debug.LogError("❌ Player.Instance es NULL — No se encontró al jugador.");
+            Debug.LogError(" Player.Instance es NULL — No se encontró al jugador.");
             return;
         }
 

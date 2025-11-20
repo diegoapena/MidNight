@@ -9,7 +9,7 @@ public class RoomSow : MonoBehaviour
     public GameObject lightRoom;
     public GameObject lightRoom1;
 
-    public bool activeRoom = false; // Lo ideal sería que sea un enum
+    public bool activeRoom = false; 
 
     void Start()
     {

@@ -3,21 +3,21 @@ using UnityEngine.UI;
 using TMPro;
 
 public class BaseEnemy : MonoBehaviour
-
 {
-    [SerializeField] private EnemyDataSO entities;
-    [SerializeField] private TextMeshProUGUI nombre;
-    //[SerializeField] private TextMeshProUGUI vida;
-    [SerializeField] private TextMeshProUGUI levelOfThreat;
-    //[SerializeField] private TextMeshProUGUI ataque;
-    [SerializeField] private TextMeshProUGUI descripcion;
-    //[SerializeField] private Image cara;
+    private EnemyDataSO entities;
+    private TextMeshProUGUI nombre;
+    private TextMeshProUGUI levelOfThreat;
+    private TextMeshProUGUI descripcion;
 
-    private void Start()
+    protected virtual void Start()
     {
-        nombre.text = entities.EnemyName;
-        levelOfThreat.text = entities.LevelOfThreat.ToString();
-        descripcion.text = entities.Description;
-       // cara.sprite = entities.Icon;
+        // Implementación inicial del enemigo
+    }
+
+    // Método para destruir al enemigo
+    public void DestroyEnemy()
+    {
+        Destroy(gameObject); // Destruye el objeto asociado al enemigo
+        Debug.Log("Enemigo destruido");
     }
 }

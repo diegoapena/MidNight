@@ -1,10 +1,7 @@
 ﻿using UnityEngine;
 
-public class ShadowEnemy : BaseEntity, IEnemy, IDamageable
+public class ShadowEnemy : BaseEnemy
 {
-    [Header("Daño de cordura")]
-    public float sanityDamage = 20f; // YA NO SE USA, LO PUEDES ELIMINAR
-
     private bool isDead = false;
 
     protected override void Start()
@@ -12,6 +9,7 @@ public class ShadowEnemy : BaseEntity, IEnemy, IDamageable
         base.Start();
         DamageSanityOnSpawn();
     }
+
     public void ChasePlayer()
     {
         
@@ -22,7 +20,6 @@ public class ShadowEnemy : BaseEntity, IEnemy, IDamageable
         
     }
 
-    
     private void DamageSanityOnSpawn()
     {
         BarraDeCordura.Instance?.IniciarBajadaCordura();
@@ -43,7 +40,6 @@ public class ShadowEnemy : BaseEntity, IEnemy, IDamageable
     {
         if (isDead) return;
 
-        
         BarraDeCordura.Instance?.IniciarBajadaCordura();
         Debug.Log("Shadow atacó  tu cordura bajara");
 
@@ -66,5 +62,11 @@ public class ShadowEnemy : BaseEntity, IEnemy, IDamageable
     public void DieByLight()
     {
         Die();
+    }
+
+    public void DestroyEnemy()
+    {
+        Debug.Log($"{gameObject.name} destruido por la linterna.");
+        Destroy(gameObject); // Destruir el objeto enemigo
     }
 }

@@ -7,6 +7,10 @@ public class LinternaController : MonoBehaviour
     public float rotationSpeed = 8f;
     private bool isOn = false;
 
+    [SerializeField] private float detectionAngle = 0.8f; // Umbral del producto punto para detectar enemigos
+    [SerializeField] private float detectionRange = 5f; // Rango de detección de la linterna
+    [SerializeField] private BarraDeCordura barraDeCordura; // Referencia a la barra de cordura
+
     public void ToggleLight()
     {
         isOn = !isOn;
@@ -17,6 +21,10 @@ public class LinternaController : MonoBehaviour
     void Update()
     {
         RotateTowardsMouse();
+        if (isOn)
+        {
+            DetectEnemies();
+        }
     }
 
     private void RotateTowardsMouse()
@@ -32,5 +40,26 @@ public class LinternaController : MonoBehaviour
             Quaternion.Euler(0, 0, angle - 90f),
             Time.deltaTime * rotationSpeed
         );
+    }
+
+    private void DetectEnemies()
+    {
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(flashlight.transform.position, detectionRange);
+        foreach (var hitCollider in hitColliders)
+        {
+            var enemy = hitCollider.GetComponent<BaseEnemy>();
+            if (enemy != null)
+            {
+                Vector3 enemyDir = (enemy.transform.position - flashlight.transform.position).normalized;
+                Vector3 flashlightDir = flashlight.transform.up;
+
+                float dot = Vector3.Dot(flashlightDir, enemyDir);
+                if (dot > detectionAngle)
+                {
+                    enemy.DestroyEnemy(); // Destruir al enemigo
+                    barraDeCordura.RestaurarCordura(); // Restaurar la cordura
+                }
+            }
+        }
     }
 }

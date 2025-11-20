@@ -105,12 +105,7 @@ MonoBehaviour:
   health: 2
   damage: 1
   entityName: 
-  detectionRange: 4
-  speedMultiplier: 1.5
-  lightAngle: 35
-  obstacleMask:
-    serializedVersion: 2
-    m_Bits: 0
+  sanityDamage: 20
 --- !u!61 &-1369574595841139513
 BoxCollider2D:
   m_ObjectHideFlags: 0

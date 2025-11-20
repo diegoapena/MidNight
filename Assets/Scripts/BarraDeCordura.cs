@@ -6,6 +6,8 @@ public class BarraDeCordura : MonoBehaviour
     public static BarraDeCordura Instance;
 
     [Header("Cordura")]
+    [SerializeField] private float maxCordura = 100f;
+    private float corduraActual;
     public float maxSanity = 100f;
     public float tiempoEntreBajas = 1f;
     private float temporizador;
@@ -27,6 +29,7 @@ public class BarraDeCordura : MonoBehaviour
     private void Start()
     {
         player.Sanity = maxSanity;
+        corduraActual = maxCordura;
         ActualizarInterfaz();
     }
 
@@ -35,7 +38,6 @@ public class BarraDeCordura : MonoBehaviour
         PlayerSanity();
         ActualizarInterfaz();
 
-        // CUANDO LA CORDURA LLEGUE A 0 → APARECE POLLUTANT
         if (player.Sanity <= 0 && !pollutantSpawned)
         {
             pollutantSpawned = true;
@@ -86,5 +88,12 @@ public class BarraDeCordura : MonoBehaviour
     public void IniciarBajadaCordura()
     {
         corduraBajando = true;
+    }
+
+    public void RestaurarCordura()
+    {
+        corduraActual = maxCordura;
+        Debug.Log("Cordura restaurada a 100.");
+        // Aquí puedes actualizar la barra visual si tienes una UI
     }
 }

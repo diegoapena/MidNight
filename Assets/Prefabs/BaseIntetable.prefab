@@ -34,8 +34,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 9.21, y: 0.58}
-  m_SizeDelta: {x: 21.661, y: 3.9944}
+  m_AnchoredPosition: {x: 9.9443, y: -3.303}
+  m_SizeDelta: {x: 19.2436, y: 13.995}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &4104861539968546881
 MeshRenderer:
@@ -139,7 +139,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
+  m_VerticalAlignment: 8192
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -9.904743, y: 0, z: 15.922753, w: 0.5055649}
+  m_margin: {x: -0.02584934, y: 0, z: 15.922753, w: 0.5055649}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   _SortingLayer: 0
