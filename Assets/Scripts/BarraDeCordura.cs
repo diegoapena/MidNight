@@ -3,66 +3,61 @@ using UnityEngine.UI;
 
 public class BarraDeCordura : MonoBehaviour
 {
-    private Player player;
     public static BarraDeCordura Instance;
+
     [Header("Cordura")]
     public float maxSanity = 100f;
     public float tiempoEntreBajas = 1f;
-    private float temporizador = 0f;
-    private bool corduraBajando = false;
+    private float temporizador;
+    private bool corduraBajando;
 
-    [Header("Interfaz")]
+    [Header("Referencias")]
+    public Player player;
     public Image BarraCordura;
     public Text TextoCordura;
 
-    void Start()
+    private void Awake()
     {
-        player = GameObject.Find("Player")?.GetComponent<Player>();
-        if (player == null)
-        {
-            Debug.LogError("No se encontró el Player");
-            enabled = false;
-            return;
-        }
+        if (Instance == null) Instance = this;
+        else Destroy(gameObject);
+    }
 
-       
+    private void Start()
+    {
         player.Sanity = maxSanity;
         ActualizarInterfaz();
     }
 
-    void Update()
+    private void Update()
     {
         PlayerSanity();
         ActualizarInterfaz();
     }
 
-    
-    void PlayerSanity()
+    private void PlayerSanity()
     {
-        if (player == null) return;
+        if (!corduraBajando) return;
 
-        if (corduraBajando && temporizador >= tiempoEntreBajas)
+        temporizador += Time.deltaTime;
+
+        if (temporizador >= tiempoEntreBajas)
         {
             if (player.Sanity > 0)
                 player.Sanity -= 1f;
 
             temporizador = 0f;
         }
-
-        temporizador += Time.deltaTime;
     }
 
-    
-    void ActualizarInterfaz()
+    private void ActualizarInterfaz()
     {
         if (BarraCordura != null)
             BarraCordura.fillAmount = player.Sanity / maxSanity;
 
         if (TextoCordura != null)
-            TextoCordura.text = player.Sanity.ToString("f0");
+            TextoCordura.text = player.Sanity.ToString("0");
     }
 
-    
     public void RestarCordura(float cantidad)
     {
         player.Sanity -= cantidad;
@@ -70,15 +65,11 @@ public class BarraDeCordura : MonoBehaviour
         if (player.Sanity < 0)
             player.Sanity = 0;
 
-        Debug.Log($"Cordura reducida en {cantidad}. Nueva cordura: {player.Sanity}");
-
         ActualizarInterfaz();
     }
 
-    
     public void IniciarBajadaCordura()
     {
         corduraBajando = true;
-        Debug.Log("Bajada de cordura activada");
     }
 }

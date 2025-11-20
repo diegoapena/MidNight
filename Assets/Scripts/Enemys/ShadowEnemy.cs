@@ -1,27 +1,32 @@
 ﻿using UnityEngine;
-using UnityEngine.Rendering.Universal;
 
 public class ShadowEnemy : BaseEntity, IEnemy, IDamageable
 {
     [Header("Daño de cordura")]
-    public float sanityDamage = 20f;
+    public float sanityDamage = 20f; // YA NO SE USA, LO PUEDES ELIMINAR
 
     private bool isDead = false;
-    public static BarraDeCordura Instance;
+
     protected override void Start()
     {
         base.Start();
         DamageSanityOnSpawn();
     }
+    public void ChasePlayer()
+    {
+        
+    }
 
-    // Baja cordura cuando aparece
+    public void StopChasing()
+    {
+        
+    }
+
+    
     private void DamageSanityOnSpawn()
     {
-        if (BarraDeCordura.Instance != null)
-        {
-            BarraDeCordura.Instance.RestarCordura(sanityDamage);
-            Debug.Log($"Shadow apareció tu cordura -{sanityDamage}");
-        }
+        BarraDeCordura.Instance?.IniciarBajadaCordura();
+        Debug.Log("Shadow apareció  comienza bajada continua de cordura");
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -34,25 +39,13 @@ public class ShadowEnemy : BaseEntity, IEnemy, IDamageable
         }
     }
 
-    public void ChasePlayer()
-    {
-       
-    }
-
-    public void StopChasing()
-    {
-       
-    }
-
     public void Attack()
     {
         if (isDead) return;
 
-        if (BarraDeCordura.Instance != null)
-        {
-            BarraDeCordura.Instance.RestarCordura(sanityDamage);
-            Debug.Log($"Shadow atacó → cordura -{sanityDamage}");
-        }
+        
+        BarraDeCordura.Instance?.IniciarBajadaCordura();
+        Debug.Log("Shadow atacó  tu cordura bajara");
 
         Die();
     }
@@ -67,8 +60,6 @@ public class ShadowEnemy : BaseEntity, IEnemy, IDamageable
         if (isDead) return;
 
         isDead = true;
-        Debug.Log("Shadow murió.");
-
         Destroy(gameObject);
     }
 

@@ -3,6 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class PollutantEnemy : BaseEntity
 {
+    public static PollutantEnemy Instance { get; private set; }
+
     [Header("Aparición")]
     public float delayAparicion = 0.5f;
     public string escenaFinal = "FinalSinEscape";
@@ -13,22 +15,30 @@ public class PollutantEnemy : BaseEntity
     private Transform jugador;
     private bool persiguiendo = false;
 
+    private void Awake()
+    {
+        Instance = this;
+        gameObject.SetActive(false); // Inicia oculto
+    }
+
+    // Llamado cuando la cordura llega a 0
     public void ActivarPollutant()
     {
+        jugador = Player.Instance.transform;
+
+        // Aparece al lado del jugador
+        transform.position = jugador.position + new Vector3(1.5f, 0, 0);
+
+        gameObject.SetActive(true);
+
+        // Inicia su aparición después del delay
         Invoke(nameof(Aparecer), delayAparicion);
     }
 
     void Aparecer()
     {
-        
-        if (Player.Instance != null)
-        {
-            jugador = Player.Instance.transform;
-        }
-
         persiguiendo = true;
         Debug.Log("Pollutant comenzó a perseguir al jugador.");
-
         BloquearPuertas();
     }
 
@@ -60,12 +70,10 @@ public class PollutantEnemy : BaseEntity
 
     void BloquearPuertas()
     {
-        // ESTE SE QUEDA porque NO puedes hacer Singleton de TODAS las puertas
         BaseInteractable[] puertas = Object.FindObjectsByType<BaseInteractable>(FindObjectsSortMode.None);
-
         foreach (var puerta in puertas)
             puerta.enabled = false;
 
-        Debug.Log("Todas las puertas han sido bloqueadas por Pollutant.");
+        Debug.Log("Puertas bloqueadas por Pollutant.");
     }
 }
