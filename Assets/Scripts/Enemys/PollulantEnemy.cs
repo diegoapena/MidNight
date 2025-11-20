@@ -1,13 +1,12 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PollutantEnemy : BaseEntity
+public class PollutantEnemy : MonoBehaviour
 {
     public static PollutantEnemy Instance { get; private set; }
 
     [Header("Aparición")]
     public float delayAparicion = 0.5f;
-    public string escenaFinal = "FinalSinEscape";
 
     [Header("Movimiento")]
     public float velocidad = 2f;
@@ -18,36 +17,35 @@ public class PollutantEnemy : BaseEntity
     private void Awake()
     {
         Instance = this;
-        gameObject.SetActive(false); // Inicia oculto
     }
 
-    // Llamado cuando la cordura llega a 0
     public void ActivarPollutant()
     {
-        jugador = Player.Instance.transform;
+        
+        jugador = Player.Instance != null ? Player.Instance.transform : null;
 
-        // Aparece al lado del jugador
+        if (jugador == null)
+        {
+            Debug.LogError("❌ Player.Instance es NULL — No se encontró al jugador.");
+            return;
+        }
+
+        
         transform.position = jugador.position + new Vector3(1.5f, 0, 0);
 
         gameObject.SetActive(true);
 
-        // Inicia su aparición después del delay
-        Invoke(nameof(Aparecer), delayAparicion);
+        
+        Invoke(nameof(ComenzarPersecucion), delayAparicion);
     }
 
-    void Aparecer()
+    private void ComenzarPersecucion()
     {
         persiguiendo = true;
-        Debug.Log("Pollutant comenzó a perseguir al jugador.");
-        BloquearPuertas();
+        Debug.Log(" Pollutant te perseguira hasta la MUERTE");
     }
 
-    void Update()
-    {
-        PollutantRun();
-    }
-
-    void PollutantRun()
+    private void Update()
     {
         if (persiguiendo && jugador != null)
         {
@@ -59,21 +57,14 @@ public class PollutantEnemy : BaseEntity
         }
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            Debug.Log("Pollutant atrapó al jugador. Fin del juego.");
-            SceneManager.LoadScene(escenaFinal);
+            Debug.Log(" Pollutant mató al jugador");
+             Destroy(collision.gameObject);
+
+           
         }
-    }
-
-    void BloquearPuertas()
-    {
-        BaseInteractable[] puertas = Object.FindObjectsByType<BaseInteractable>(FindObjectsSortMode.None);
-        foreach (var puerta in puertas)
-            puerta.enabled = false;
-
-        Debug.Log("Puertas bloqueadas por Pollutant.");
     }
 }

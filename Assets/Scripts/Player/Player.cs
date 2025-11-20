@@ -5,6 +5,7 @@ public class Player : MonoBehaviour
     public float speed = 5f;
     public float Sanity = 100f;
     public static Player Instance { get; private set; }
+
     private PlayerInputs inputs;
     private PlayerAnimation anim;
 
@@ -14,6 +15,17 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
+        // --------- SINGLETON CORRECTO ---------
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else if (Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         inputs = GetComponent<PlayerInputs>();
         anim = GetComponent<PlayerAnimation>();
     }
@@ -54,7 +66,7 @@ public class Player : MonoBehaviour
         {
             if (linternaController == null)
             {
-                Debug.LogError(" No hay LinternaController asignado.");
+                Debug.LogError("❌ No hay LinternaController asignado.");
             }
             else
             {

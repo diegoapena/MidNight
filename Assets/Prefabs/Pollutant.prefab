@@ -101,8 +101,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47e28bc352569114eba162a5907ef5c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 2
+  health: 100
+  damage: 10
+  entityName: Entity
   delayAparicion: 2
-  escenaFinal: FinalSinEscape
   velocidad: 2
 --- !u!61 &6469582680887145088
 BoxCollider2D:
