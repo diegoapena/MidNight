@@ -2,21 +2,24 @@
 
 public class SpawnEnemys : MonoBehaviour
 {
-    [Header("Puntos de Spawn")]
-    public Transform[] spawnPoints;
+    [Header("Puntos de Spawn por Tipo")]
+    public Transform[] shapeshifterSpawnPoints;
+    public Transform[] shadowSpawnPoints;
+    public Transform[] noisySpawnPoints;
 
     [Header("Prefabs de Enemigos")]
-    public GameObject[] enemyPrefabs;
+    public GameObject shapeshifterEnemyPrefab;
+    public GameObject shadowPrefab;
+    public GameObject noisyPrefab;
 
     private int currentEnemyCount = 0;
     private const int maxEnemies = 10;
 
     [Header("Barra de Cordura")]
-    public BarraDeCordura barraDeCordura; 
+    public BarraDeCordura barraDeCordura;
 
     private void Start()
     {
-        
         Invoke(nameof(StartSpawning), 60f);
     }
 
@@ -25,24 +28,38 @@ public class SpawnEnemys : MonoBehaviour
         float initialDelay = Random.Range(1f, 5f);
         float repeatRate = Random.Range(5f, 15f);
 
-        InvokeRepeating(nameof(SpawnEnemy), initialDelay, repeatRate);
+        InvokeRepeating(nameof(Spawnshapeshifter), initialDelay, repeatRate);
+        InvokeRepeating(nameof(SpawnShadow), initialDelay + 2f, repeatRate + 3f);
+        InvokeRepeating(nameof(SpawnNoisy), initialDelay + 4f, repeatRate + 5f);
     }
 
-    private void SpawnEnemy()
+    private void Spawnshapeshifter()
+    {
+        SpawnEnemy(shapeshifterEnemyPrefab, shapeshifterSpawnPoints);
+    }
+
+    private void SpawnShadow()
+    {
+        SpawnEnemy(shadowPrefab, shadowSpawnPoints);
+    }
+
+    private void SpawnNoisy()
+    {
+        SpawnEnemy(noisyPrefab, noisySpawnPoints);
+    }
+
+    private void SpawnEnemy(GameObject enemyPrefab, Transform[] spawnPoints)
     {
         if (currentEnemyCount >= maxEnemies) return;
 
-        // Elegir enemigo aleatorio
-        GameObject randomEnemy = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
-
-        // Elegir punto aleatorio
+        // Elegir punto aleatorio del tipo correspondiente
         Transform randomSpawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
 
         // Instanciar enemigo
-        GameObject spawnedEnemy = Instantiate(randomEnemy, randomSpawnPoint.position, Quaternion.identity);
+        GameObject spawnedEnemy = Instantiate(enemyPrefab, randomSpawnPoint.position, Quaternion.identity);
 
         currentEnemyCount++;
-        Debug.Log($"Spawned: {randomEnemy.name} en {randomSpawnPoint.position}. Total: {currentEnemyCount}");
+        Debug.Log($"Spawned: {enemyPrefab.name} en {randomSpawnPoint.position}. Total: {currentEnemyCount}");
 
         // Activar bajada de cordura
         barraDeCordura?.IniciarBajadaCordura();

@@ -4,7 +4,7 @@ public class ShadowEnemy : BaseEnemy
 {
     private bool isDead = false;
 
-    protected override void Start()
+     void Start()
     {
         base.Start();
         DamageSanityOnSpawn();
