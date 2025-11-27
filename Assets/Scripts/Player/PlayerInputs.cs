@@ -3,11 +3,11 @@ using UnityEngine.InputSystem;
 
 public class PlayerInputs : MonoBehaviour
 {
-    public InputSystem_Actions input { get; private set; }
+    public InputSystem_Actions input;
 
-    public Vector2 MoveInput { get; private set; }
+    public Vector2 MoveInput;
     public bool InteractPressed => Keyboard.current.eKey.wasPressedThisFrame;
-    public bool LinternaPressed { get; private set; }
+    public bool LinternaPressed;
 
     private void Awake()
     {

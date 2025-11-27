@@ -4,7 +4,7 @@ public class Player : MonoBehaviour
 {
     public float speed = 5f;
     public float Sanity = 100f;
-    public static Player Instance { get; private set; }
+    public static Player Instance;  
 
     private PlayerInputs inputs;
     private PlayerAnimation anim;
