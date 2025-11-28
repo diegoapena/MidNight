@@ -7,15 +7,35 @@ public class LinternaController : MonoBehaviour
     public float rotationSpeed = 8f;
     private bool isOn = false;
 
-    [SerializeField] private float detectionAngle = 0.8f; // Umbral del producto punto para detectar enemigos
-    [SerializeField] private float detectionRange = 5f; // Rango de detección de la linterna
-    [SerializeField] private BarraDeCordura barraDeCordura; // Referencia a la barra de cordura
+    [SerializeField] private float detectionAngle = 0.8f;
+    [SerializeField] private float detectionRange = 5f;
+    [SerializeField] private BarraDeCordura barraDeCordura;
+
+    private AudioSource flashlightAudio; // AudioSource exclusivo para la linterna
+
+    private void Awake()
+    {
+        // Crear AudioSource dedicado a la linterna
+        flashlightAudio = gameObject.AddComponent<AudioSource>();
+        flashlightAudio.loop = false;
+        flashlightAudio.playOnAwake = false;
+
+        // Asignar clip de linterna desde SoundManager
+        if (SoundManager.Instance != null)
+            flashlightAudio.clip = SoundManager.Instance.FlashLight;
+    }
 
     public void ToggleLight()
     {
         isOn = !isOn;
         flashlight.enabled = isOn;
         Debug.Log(isOn ? "Linterna encendida" : "Linterna apagada");
+
+        // Reproducir sonido solo al encender
+        if (isOn && flashlightAudio.clip != null)
+        {
+            flashlightAudio.Play();
+        }
     }
 
     void Update()
@@ -56,8 +76,8 @@ public class LinternaController : MonoBehaviour
                 float dot = Vector3.Dot(flashlightDir, enemyDir);
                 if (dot > detectionAngle)
                 {
-                    enemy.DestroyEnemy(); // Destruir al enemigo
-                    barraDeCordura.RestaurarCordura(); // Restaurar la cordura
+                    enemy.DestroyEnemy();
+                    barraDeCordura.RestaurarCordura();
                 }
             }
         }
