@@ -1,30 +1,31 @@
 using UnityEngine;
-[RequireComponent(typeof(AudioSource))]
+
+using System.Collections;
+
 public class AudioReproducer : MonoBehaviour
 {
-    AudioSource surce;
+    private AudioSource audioSource;
 
-    public void Awake()
+    private void Awake()
     {
-        surce = GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+            Debug.LogError("AudioSource no encontrado en AudioReproducer");
     }
 
-    void Start()
-    {
-        
-    }
     public void SetAudio()
     {
-        //surce.clip.length
-        Invoke("DesactiveObj", surce.clip.length);
+        if (audioSource != null && audioSource.clip != null)
+        {
+            audioSource.Play();
+            StartCoroutine(DisableAfterClip());
+        }
     }
-    public void DesactiveObj()
+
+    private IEnumerator DisableAfterClip()
     {
-        gameObject.SetActive(false);    
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        
+        yield return new WaitForSeconds(audioSource.clip.length);
+        audioSource.Stop();
+        gameObject.SetActive(false);
     }
 }

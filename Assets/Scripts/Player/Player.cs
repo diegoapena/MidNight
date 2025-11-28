@@ -4,22 +4,20 @@ public class Player : MonoBehaviour
 {
     public float speed = 5f;
     public float Sanity = 100f;
-    public static Player Instance;  
+    public static Player Instance;
 
     private PlayerInputs inputs;
     private PlayerAnimation anim;
-
     private IInteractable interactableObject;
 
     [SerializeField] private LinternaController linternaController;
 
+    
+
     private void Awake()
     {
-        
         if (Instance == null)
-        {
             Instance = this;
-        }
         else if (Instance != this)
         {
             Destroy(gameObject);
@@ -40,15 +38,24 @@ public class Player : MonoBehaviour
     private void HandleMovement()
     {
         Vector2 input = inputs.MoveInput;
+        bool caminando = input != Vector2.zero;
 
-        if (input != Vector2.zero)
+        if (caminando)
         {
             transform.position += (Vector3)input * speed * Time.deltaTime;
             anim.UpdateMovementAnimation(input);
+
+            
+            if (SoundManager.Instance != null)
+                SoundManager.Instance.PlayStepSound();
         }
         else
         {
             anim.StopMovementAnimation();
+
+            
+            if (SoundManager.Instance != null)
+                SoundManager.Instance.StopStepSound();
         }
     }
 
@@ -65,13 +72,9 @@ public class Player : MonoBehaviour
         if (inputs.LinternaPressed)
         {
             if (linternaController == null)
-            {
                 Debug.LogError("No hay LinternaController asignado.");
-            }
             else
-            {
                 linternaController.ToggleLight();
-            }
 
             inputs.ClearLinterna();
         }
@@ -80,9 +83,7 @@ public class Player : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.TryGetComponent(out IInteractable interact))
-        {
             interactableObject = interact;
-        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
