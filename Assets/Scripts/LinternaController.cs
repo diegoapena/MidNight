@@ -9,7 +9,7 @@ public class LinternaController : MonoBehaviour
 
     [SerializeField] private float detectionAngle = 0.8f;
     [SerializeField] private float detectionRange = 5f;
-    [SerializeField] private BarraDeCordura barraDeCordura;
+    
 
     private AudioSource flashlightAudio; // AudioSource exclusivo para la linterna
 
@@ -77,7 +77,7 @@ public class LinternaController : MonoBehaviour
                 if (dot > detectionAngle)
                 {
                     enemy.DestroyEnemy();
-                    barraDeCordura.RestaurarCordura();
+                    
                 }
             }
         }
