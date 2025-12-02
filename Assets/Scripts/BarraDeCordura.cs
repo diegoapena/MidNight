@@ -96,8 +96,8 @@ public class BarraDeCordura : MonoBehaviour
 
     public void RestaurarCordura()
     {
-        corduraActual = maxCordura;
-        Debug.Log("Cordura restaurada a 100.");
-        // Aquí puedes actualizar la barra visual si tienes una UI
+        player.Sanity = maxSanity;
+        ActualizarInterfaz();
+        Debug.Log("Cordura restaurada al 100% por muerte de la entidad.");
     }
 }

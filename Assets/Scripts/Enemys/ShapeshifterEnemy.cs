@@ -12,10 +12,10 @@ public class ShapeshifterEnemy : MonoBehaviour
     public void DestroyEnemy()
     {
         if (isDead) return;
-        isDead = true;
 
         Debug.Log($"{gameObject.name} destruido por la linterna.");
-        Destroy(gameObject);
+
+        Die();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -35,7 +35,18 @@ public class ShapeshifterEnemy : MonoBehaviour
     {
         if (isDead) return;
         isDead = true;
+
+        
+        if (BarraDeCordura.Instance != null)
+        {
+            BarraDeCordura.Instance.RestaurarCordura();
+        }
+
+        Debug.Log("Shapeshifter muerto — Cordura restaurada al 100.");
+
         Destroy(gameObject);
     }
+
+
 
 }

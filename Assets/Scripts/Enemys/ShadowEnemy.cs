@@ -54,5 +54,19 @@ public class ShadowEnemy : BaseEnemy
     {
         Debug.Log($"{gameObject.name} destruido por la linterna.");
         Destroy(gameObject);
+
+        if (isDead) return;
+        isDead = true;
+
+
+        if (BarraDeCordura.Instance != null)
+        {
+            BarraDeCordura.Instance.RestaurarCordura();
+        }
+
+        Debug.Log("Shadow muerto — Cordura restaurada al 100.");
+
+        Destroy(gameObject);
     }
+
 }
