@@ -8,7 +8,7 @@ public class PlayerInputs : MonoBehaviour
     public InputSystem_Actions input;
 
     public Vector2 MoveInput;
-    public bool InteractPressed => Keyboard.current.eKey.wasPressedThisFrame;
+    public bool InteractPressed;
     public bool LinternaPressed;
 
     private void Awake()

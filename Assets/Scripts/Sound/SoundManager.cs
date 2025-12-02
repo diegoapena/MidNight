@@ -16,43 +16,47 @@ public class SoundManager : MonoBehaviour
     public int PoolSize = 10;
     public List<GameObject> AudioPool = new();
 
-    private AudioSource stepAudioSource;
+    public Dictionary<string, AudioClip> musicData = new();
+   
 
     private void Awake()
     {
-        if (Instance == null) Instance = this;
+        if (Instance == null)
+            Instance = this;
 
-        // AudioSource dedicado para pasos
-        stepAudioSource = gameObject.AddComponent<AudioSource>();
-        stepAudioSource.clip = stepsPlayer;
-        stepAudioSource.loop = true;
-        stepAudioSource.playOnAwake = false;
-
-        // Inicializar pool
-        for (int i = 0; i < PoolSize; i++)
-        {
-            GameObject obj = Instantiate(AudioReproducerPrefab);
-            obj.SetActive(false);
-            AudioPool.Add(obj);
-        }
     }
 
-    private void Start()
+   void Start()
     {
         // registrar clips en el diccionario
         musicaData.Add("stepplayer", stepsPlayer);
         musicaData.Add("FlashLight", FlashLight);
-        if (shadowAppearClip != null)
             musicaData.Add("shadowAppear", shadowAppearClip);
+
+        PlaySound("steppplayer", 10);
+        PlaySound("Flashlight", 10);
+        PlaySound("shadowAppear", 10);
     }
 
     public Dictionary<string, AudioClip> musicaData = new();
 
     // --- Pasos del Player ---
-    public void PlayStepSound()
+    public void PlaySound(string musicName, float volume)
     {
-        if (!stepAudioSource.isPlaying)
-            stepAudioSource.Play();
+        if (musicaData.TryGetValue(musicName, out AudioClip clip))
+        {
+            print(clip.name);
+
+            AudioSource AudioSource = AudioReproducerPrefab.GetComponent<AudioSource>();
+
+            AudioSource.clip = clip;
+            AudioSource.volume = volume;
+            AudioReproducerPrefab.SetActive(true);
+        }
+        else
+        {
+            print(" no existe");
+        }
     }
 
     public void StopStepSound()
