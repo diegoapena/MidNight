@@ -24,6 +24,13 @@ public class SoundManager : MonoBehaviour
         if (Instance == null)
             Instance = this;
 
+        for(int i = 0; i<PoolSize; i++)
+        {
+            GameObject obj = Instantiate(AudioReproducerPrefab, transform);
+
+            AudioPool.Add(obj);
+        }
+
     }
 
    void Start()
@@ -59,11 +66,7 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    public void StopStepSound()
-    {
-        if (stepAudioSource.isPlaying)
-            stepAudioSource.Stop();
-    }
+    
 
     
     public void PlaySoundFromPool(string musicName, float volume)
