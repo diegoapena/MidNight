@@ -11,7 +11,7 @@ public class BaseEnemy : MonoBehaviour
 
     protected virtual void Start()
     {
-        // Implementación inicial del enemigo
+        
     }
 
     // Método para destruir al enemigo

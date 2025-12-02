@@ -58,7 +58,7 @@ public class SoundManager : MonoBehaviour
             stepAudioSource.Stop();
     }
 
-    // --- Pool para otros sonidos ---
+    
     public void PlaySoundFromPool(string musicName, float volume)
     {
         if (!musicaData.TryGetValue(musicName, out AudioClip clip)) return;
