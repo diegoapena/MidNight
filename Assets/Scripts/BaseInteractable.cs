@@ -6,15 +6,11 @@
 
 using UnityEngine;
 using UnityEngine.Events;
-
 public class BaseInteractable : MonoBehaviour, IInteractable
 {
     public GameObject tooltip;
     public UnityEvent OnInteractTest;
-    // Este script define interfaces para objetos interactuables (IInteractable), enemigos (IEnemy) y objetos que pueden recibir daño (IDamageable).
-    // Relación con otros scripts:
-    // BaseInteractable implementa IInteractable.
-    // Los enemigos podrían implementar IEnemy o IDamageable para definir comportamientos específicos.
+  
     void Start()
     {
         tooltip.SetActive(false);

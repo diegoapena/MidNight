@@ -4,7 +4,10 @@ public class ShapeshifterEnemy : MonoBehaviour
 {
     private bool isDead = false;
 
-  
+    void Start()
+    {
+
+    }
 
     public void DestroyEnemy()
     {
@@ -18,10 +21,21 @@ public class ShapeshifterEnemy : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (isDead) return;
-
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            
-        }
+        if (collision.gameObject.CompareTag("Player")) Attack();
     }
+    public void Attack()
+    {
+        if (isDead) return;
+        BarraDeCordura.Instance?.IniciarBajadaCordura();
+        Debug.Log("Shapeshifter apararecio tu cordura bajará");
+        Die();
+    }
+    public void TakeDamage(float amount) => Die();
+    public void Die()
+    {
+        if (isDead) return;
+        isDead = true;
+        Destroy(gameObject);
+    }
+
 }

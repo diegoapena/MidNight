@@ -1,5 +1,5 @@
 using UnityEngine;
-
+// Controla el movimiento de la cámara para seguir al jugador suavemente.
 public class CamaraPlayer : MonoBehaviour
 {
     public GameObject Player;

@@ -4,8 +4,10 @@ using UnityEngine;
 public class RoomSow : MonoBehaviour
 {
     // Este script controla el estado de las luces de una habitación.
-    // No tiene herencias ni interfaces implementadas.
-    // Puede relacionarse con el jugador o un objeto interactivo para encender o apagar las luces.
+    // Contiene referencias a dos luces (lightRoom y lightRoom1) y un booleano (activeRoom) que indica si la habitación está activa o no.
+    // Permite alternar el estado de las luces con SwitchState() y actualizarlas con SetRoom().
+    // Relación con otros scripts: 
+    // Podría ser activado por un objeto interactivo (BaseInteractable) o por el jugador (Player) para encender o apagar las luces.
 
     public GameObject lightRoom;
     public GameObject lightRoom1;
