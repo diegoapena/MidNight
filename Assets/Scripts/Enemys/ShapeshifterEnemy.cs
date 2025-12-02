@@ -4,10 +4,7 @@ public class ShapeshifterEnemy : MonoBehaviour
 {
     private bool isDead = false;
 
-    void Start()
-    {
-        
-    }
+  
 
     public void DestroyEnemy()
     {

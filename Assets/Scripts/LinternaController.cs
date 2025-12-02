@@ -1,6 +1,11 @@
 ﻿using UnityEngine;
 using UnityEngine.Rendering.Universal;
-
+// Este script controla la linterna del jugador.
+// Permite encenderla, rotarla hacia el mouse y detectar enemigos dentro de su rango.
+// Relación con otros scripts:
+// Se relaciona con Player, que lo controla.
+// Puede destruir enemigos como ShadowEnemy y ShapeshifterEnemy.
+// Utiliza SoundManager para reproducir el sonido de la linterna.
 public class LinternaController : MonoBehaviour
 {
     public Light2D flashlight;

@@ -1,6 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
-
+// Este script gestiona los sonidos del juego.
+// Contiene un pool de objetos para reproducir clips de audio y métodos para reproducir o detener sonidos.
+// Relación con otros scripts:
+// Se relaciona con Player (sonidos de pasos), LinternaController (sonido de linterna) y enemigos (sonidos al aparecer o atacar).
 public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance;

@@ -1,5 +1,12 @@
 ﻿using UnityEngine;
 
+// Este script controla el movimiento, interacción y uso de la linterna del jugador.
+// También gestiona la animación y los sonidos de pasos.
+// Relación con otros scripts:
+// Utiliza PlayerInputs para manejar las entradas del jugador.
+// Controla LinternaController para encender la linterna.
+// Interactúa con BaseInteractable para activar objetos interactivos.
+// Puede ser atacado por enemigos como ShadowEnemy o PollutantEnemy.
 public class Player : MonoBehaviour
 {
     public float speed = 5f;

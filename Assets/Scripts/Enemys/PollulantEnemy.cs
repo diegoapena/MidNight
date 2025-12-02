@@ -1,14 +1,17 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-
+// Este script controla el comportamiento del enemigo "Pollutant".
+// Persigue al jugador y lo elimina al alcanzarlo.
+// Se relaciona con Player para perseguirlo y atacarlo.
+// Es activado por BarraDeCordura cuando la cordura del jugador llega a 0.
 public class PollutantEnemy : MonoBehaviour
 {
-    public static PollutantEnemy Instance { get; private set; }
+    public static PollutantEnemy Instance;
 
-    [Header("Aparición")]
+    
     public float delayAparicion = 0.5f;
 
-    [Header("Movimiento")]
+    
     public float velocidad = 2f;
 
     private Transform jugador;

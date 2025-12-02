@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+// Este script gestiona las entradas del jugador, como movimiento, interacción y uso de la linterna.
+// Relación con otros scripts:
+// Es utilizado por Player para manejar las acciones del jugador.
 public class PlayerInputs : MonoBehaviour
 {
     public InputSystem_Actions input;

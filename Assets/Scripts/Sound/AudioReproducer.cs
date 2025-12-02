@@ -1,7 +1,9 @@
 using UnityEngine;
 
 using System.Collections;
-
+// Este script controla la reproducción de clips de audio y desactiva el objeto una vez que el clip termina.
+// Relación con otros scripts:
+// Es utilizado por SoundManager para reproducir sonidos desde un pool de objetos.
 public class AudioReproducer : MonoBehaviour
 {
     private AudioSource audioSource;

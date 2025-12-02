@@ -1,3 +1,9 @@
+// Este script define un objeto interactivo básico.
+// Contiene un tooltip que se muestra al acercarse y un evento UnityEvent que se invoca al interactuar.
+// Relación con otros scripts:
+// Se relaciona con Player, ya que el jugador puede interactuar con estos objetos.
+// Podría usarse para activar RoomSow o cualquier otro objeto interactivo.
+
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -5,9 +11,10 @@ public class BaseInteractable : MonoBehaviour, IInteractable
 {
     public GameObject tooltip;
     public UnityEvent OnInteractTest;
-
-
-
+    // Este script define interfaces para objetos interactuables (IInteractable), enemigos (IEnemy) y objetos que pueden recibir daño (IDamageable).
+    // Relación con otros scripts:
+    // BaseInteractable implementa IInteractable.
+    // Los enemigos podrían implementar IEnemy o IDamageable para definir comportamientos específicos.
     void Start()
     {
         tooltip.SetActive(false);
@@ -16,7 +23,6 @@ public class BaseInteractable : MonoBehaviour, IInteractable
     public void Interact(GameObject observer)
     {
         OnInteractTest.Invoke();
-       
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -30,12 +36,9 @@ public class BaseInteractable : MonoBehaviour, IInteractable
 
     public void OnPlayerEnter()
     {
-       
     }
 
     public void OnPlayerExit()
     {
-        
     }
 }
-    

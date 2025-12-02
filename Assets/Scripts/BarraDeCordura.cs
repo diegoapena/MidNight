@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-
+// Este script gestiona la barra de cordura del jugador.
+// Reduce o restaura la cordura según las acciones de los enemigos.
+// Relación con otros scripts:
+// Se relaciona con Player para actualizar su cordura.
+// Es afectado por enemigos como ShadowEnemy y PollutantEnemy.
 public class BarraDeCordura : MonoBehaviour
 {
     public static BarraDeCordura Instance;
@@ -48,7 +52,7 @@ public class BarraDeCordura : MonoBehaviour
             }
             else
             {
-                Debug.LogError("❌ No existe INSTANCE de PollutantEnemy en escena.");
+                Debug.LogError(" No existe INSTANCE de PollutantEnemy en escena.");
             }
         }
     }

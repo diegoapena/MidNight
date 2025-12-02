@@ -1,10 +1,15 @@
 ﻿using TMPro;
 using UnityEditor.PackageManager;
 using UnityEngine;
+
+// Este script gestiona el tiempo y el spawn de enemigos.
+// Contiene un temporizador y activa el spawn de enemigos después de un minuto.
+// Relación con otros scripts:
+// Se relaciona con SpawnEnemys para iniciar el spawn de enemigos.
+// Podría interactuar indirectamente con Player y los enemigos.
 public class GameManager : MonoBehaviour
 { 
 [SerializeField] private TMP_Text timerText;
-[SerializeField] private RoomManager roomManager;
 [SerializeField] private GameObject player;
 [SerializeField] private SpawnEnemys spawnEnemys;
 
