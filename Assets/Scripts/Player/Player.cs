@@ -53,7 +53,7 @@ public class Player : MonoBehaviour
             transform.position += (Vector3)input * speed * Time.deltaTime;
             anim.UpdateMovementAnimation(input);
 
-           SoundManager.Instance.PlaySound("stepplayer", 10);
+           
         }
         else
         {

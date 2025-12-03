@@ -71,9 +71,10 @@ public class SoundManager : MonoBehaviour
     {
         foreach (var item in AudioPool)
         {
-            if (item.activeSelf == true)   
+            if (item.activeSelf == false)   
                 return item;
         }
+        Debug.Log("Se acabaron los sonidos disponibles");
         return null;
     }
 }

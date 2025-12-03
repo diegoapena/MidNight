@@ -16,18 +16,12 @@ public class LinternaController : MonoBehaviour
     [SerializeField] private float detectionRange = 5f;
     
 
-    private AudioSource flashlightAudio; // AudioSource exclusivo para la linterna
+   
 
     private void Awake()
     {
-        // Crear AudioSource dedicado a la linterna
-        flashlightAudio = gameObject.AddComponent<AudioSource>();
-        flashlightAudio.loop = false;
-        flashlightAudio.playOnAwake = false;
-
-        // Asignar clip de linterna desde SoundManager
-        if (SoundManager.Instance != null)
-            flashlightAudio.clip = SoundManager.Instance.FlashLight;
+        
+       
     }
 
     public void ToggleLight()
@@ -37,10 +31,7 @@ public class LinternaController : MonoBehaviour
         Debug.Log(isOn ? "Linterna encendida" : "Linterna apagada");
 
         // Reproducir sonido solo al encender
-        if (isOn && flashlightAudio.clip != null)
-        {
-            flashlightAudio.Play();
-        }
+        SoundManager.Instance.PlaySound("flashlight", 5);
     }
 
     void Update()

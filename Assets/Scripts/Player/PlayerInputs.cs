@@ -43,6 +43,7 @@ public class PlayerInputs : MonoBehaviour
     private void OnMove(InputAction.CallbackContext ctx)
     {
         MoveInput = ctx.ReadValue<Vector2>();
+       
     }
 
     private void OnLinterna(InputAction.CallbackContext ctx)
