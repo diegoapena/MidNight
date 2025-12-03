@@ -10,16 +10,21 @@ using TMPro;
 // Puede interactuar con Player y BarraDeCordura para reducir la cordura o causar daño.
 public class BaseEnemy : MonoBehaviour
 {
-    private EnemyDataSO entities;
-    private TextMeshProUGUI nombre;
-    private TextMeshProUGUI levelOfThreat;
-    private TextMeshProUGUI descripcion;
+    [SerializeField ]private EnemyDataSO entities;
+    [SerializeField]private TextMeshProUGUI nombre;
+    [SerializeField] private TextMeshProUGUI levelOfThreat;
+    [SerializeField] private TextMeshProUGUI descripcion;
+    [SerializeField] private Image cara;
 
-    protected virtual void Start()
+
+    private void Start()
     {
-        
+        nombre.text = entities.EnemyName;
+        levelOfThreat.text = entities.LevelOfThreat.ToString();
+        descripcion.text = entities.Description;
+        cara.sprite = entities.Icon;
     }
-
+    
     // Método para destruir al enemigo
     public void DestroyEnemy()
     {

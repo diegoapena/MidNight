@@ -12,7 +12,7 @@ public class ShadowEnemy : BaseEnemy
 
     void Start()
     {
-        base.Start();
+      
         DamageSanityOnSpawn();
 
         // reproducir sonido al aparecer

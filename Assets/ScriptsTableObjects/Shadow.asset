@@ -17,5 +17,5 @@ MonoBehaviour:
   Health: 2
   Damage: 2
   LevelOfThreat: 1
-  Icon: {fileID: 0}
+  Icon: {fileID: 5920517790199751241, guid: 6617cac5ad60fa948ae4f26eba04b895, type: 3}
   Description: "Ves algo por ah\xED\u2026 \xBFser\xE1 una sombra en la esquina?"
