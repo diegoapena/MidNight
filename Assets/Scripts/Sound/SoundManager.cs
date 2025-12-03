@@ -1,9 +1,8 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using UnityEngine;
-// Este script gestiona los sonidos del juego.
-// Contiene un pool de objetos para reproducir clips de audio y métodos para reproducir o detener sonidos.
-// Relación con otros scripts:
-// Se relaciona con Player (sonidos de pasos), LinternaController (sonido de linterna) y enemigos (sonidos al aparecer o atacar).
+
+// SoundManager controla TODOS los sonidos del juego.
+// Usa un pool para sonidos mÃºltiples y un mÃ©todo directo para reproducir un solo clip.
 public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance;
@@ -16,49 +15,50 @@ public class SoundManager : MonoBehaviour
     public int PoolSize = 10;
     public List<GameObject> AudioPool = new();
 
-    public Dictionary<string, AudioClip> musicData = new();
-   
+    public Dictionary<string, AudioClip> musicaData = new();
 
     private void Awake()
     {
         if (Instance == null)
             Instance = this;
 
-        for(int i = 0; i<PoolSize; i++)
+        // Crear pool
+        for (int i = 0; i < PoolSize; i++)
         {
             GameObject obj = Instantiate(AudioReproducerPrefab, transform);
-
+            obj.SetActive(false);
             AudioPool.Add(obj);
         }
-
     }
 
-   void Start()
+    void Start()
     {
-        // registrar clips en el diccionario
-        musicaData.Add("stepplayer", stepsPlayer);
-        musicaData.Add("FlashLight", FlashLight);
-            musicaData.Add("shadowAppear", shadowAppearClip);
 
-        PlaySound("steppplayer", 10);
-        PlaySound("Flashlight", 10);
-        PlaySound("shadowAppear", 10);
+
+        musicaData.Add("stepplayer", stepsPlayer);
+        musicaData.Add("flashlight", FlashLight);
+        musicaData.Add("shadowAppear", shadowAppearClip);
+
+        // PlaySound("stepplayer", 1f);
+        //PlaySound("flashlight", 1f);
+        //PlaySound("shadowAppear", 1f);
+
     }
 
-    public Dictionary<string, AudioClip> musicaData = new();
 
-    // --- Pasos del Player ---
     public void PlaySound(string musicName, float volume)
     {
         if (musicaData.TryGetValue(musicName, out AudioClip clip))
         {
             print(clip.name);
 
-            AudioSource AudioSource = AudioReproducerPrefab.GetComponent<AudioSource>();
 
-            AudioSource.clip = clip;
-            AudioSource.volume = volume;
-            AudioReproducerPrefab.SetActive(true);
+            AudioSource audioSource = GetAvalibleSoundReproducer().GetComponent<AudioSource>();
+
+            audioSource.clip = clip;
+            audioSource.volume = volume;
+            audioSource.gameObject.SetActive(true);
+            audioSource.GetComponent<AudioReproducer>().SetAudio();
         }
         else
         {
@@ -66,39 +66,17 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    
 
-    
-    public void PlaySoundFromPool(string musicName, float volume)
+
+    public GameObject GetAvalibleSoundReproducer()
     {
-        if (!musicaData.TryGetValue(musicName, out AudioClip clip)) return;
-
-        List<GameObject> available = new List<GameObject>();
-        foreach (var obj in AudioPool)
-            if (!obj.activeSelf) available.Add(obj);
-
-        if (available.Count == 0) return;
-
-        GameObject audioObj = available[Random.Range(0, available.Count)];
-        AudioSource audioSource = audioObj.GetComponent<AudioSource>();
-        audioSource.clip = clip;
-        audioSource.volume = volume;
-        audioObj.SetActive(true);
-        audioObj.GetComponent<AudioReproducer>().SetAudio();
-    }
-
-    public void StopSound(string musicName)
-    {
-        if (!musicaData.TryGetValue(musicName, out AudioClip clip)) return;
-
-        foreach (var obj in AudioPool)
+        foreach (var item in AudioPool)
         {
-            AudioSource src = obj.GetComponent<AudioSource>();
-            if (src.clip == clip)
-            {
-                src.Stop();
-                obj.SetActive(false);
-            }
+            if (!item.activeSelf)   // buscar uno libre
+                return item;
         }
+
+        Debug.LogWarning("No hay AudioReproducer disponible en el Pool.");
+        return null;
     }
 }

@@ -25,6 +25,8 @@ public class PlayerInputs : MonoBehaviour
         input.Player.Move.canceled += OnMove;
 
         input.Player.Linterna.started += OnLinterna;
+        
+
     }
 
     private void OnDisable()

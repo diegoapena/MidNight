@@ -3,6 +3,12 @@
 public class ShadowEnemy : BaseEnemy
 {
     private bool isDead = false;
+    private Rigidbody2D rb;
+
+    void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
 
     void Start()
     {
@@ -17,7 +23,7 @@ public class ShadowEnemy : BaseEnemy
     {
         if (SoundManager.Instance != null)
         {
-            SoundManager.Instance.PlaySoundFromPool("shadowAppear", 1f);
+            SoundManager.Instance.PlaySound("shadowAppear", 1f);
         }
     }
 
@@ -68,5 +74,5 @@ public class ShadowEnemy : BaseEnemy
 
         Destroy(gameObject);
     }
-
+   
 }

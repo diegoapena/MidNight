@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     public float speed = 5f;
     public float Sanity = 100f;
     public static Player Instance;
-
+    private Rigidbody2D rb;
     private PlayerInputs inputs;
     private PlayerAnimation anim;
     private IInteractable interactableObject;
@@ -33,6 +33,7 @@ public class Player : MonoBehaviour
 
         inputs = GetComponent<PlayerInputs>();
         anim = GetComponent<PlayerAnimation>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     private void Update()
@@ -52,17 +53,11 @@ public class Player : MonoBehaviour
             transform.position += (Vector3)input * speed * Time.deltaTime;
             anim.UpdateMovementAnimation(input);
 
-            
-            if (SoundManager.Instance != null)
-                SoundManager.Instance.PlayStepSound();
+           SoundManager.Instance.PlaySound("stepplayer", 0.1f);
         }
         else
         {
             anim.StopMovementAnimation();
-
-            
-            if (SoundManager.Instance != null)
-                SoundManager.Instance.StopStepSound();
         }
     }
 
