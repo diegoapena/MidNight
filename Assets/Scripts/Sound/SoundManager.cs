@@ -26,14 +26,13 @@ public class SoundManager : MonoBehaviour
         for (int i = 0; i < PoolSize; i++)
         {
             GameObject obj = Instantiate(AudioReproducerPrefab, transform);
-            obj.SetActive(false);
+            
             AudioPool.Add(obj);
         }
     }
 
     void Start()
     {
-
 
         musicaData.Add("stepplayer", stepsPlayer);
         musicaData.Add("flashlight", FlashLight);
@@ -72,11 +71,9 @@ public class SoundManager : MonoBehaviour
     {
         foreach (var item in AudioPool)
         {
-            if (!item.activeSelf)   // buscar uno libre
+            if (item.activeSelf == true)   
                 return item;
         }
-
-        Debug.LogWarning("No hay AudioReproducer disponible en el Pool.");
         return null;
     }
 }

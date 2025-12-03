@@ -38,12 +38,12 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        HandleMovement();
-        HandleInteraction();
-        HandleLinterna();
+        Movement();
+        Interaction();
+        Linterna();
     }
 
-    private void HandleMovement()
+    private void Movement()
     {
         Vector2 input = inputs.MoveInput;
         bool caminando = input != Vector2.zero;
@@ -53,7 +53,7 @@ public class Player : MonoBehaviour
             transform.position += (Vector3)input * speed * Time.deltaTime;
             anim.UpdateMovementAnimation(input);
 
-           SoundManager.Instance.PlaySound("stepplayer", 0.1f);
+           SoundManager.Instance.PlaySound("stepplayer", 10);
         }
         else
         {
@@ -61,7 +61,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void HandleInteraction()
+    private void Interaction()
     {
         if (interactableObject != null && inputs.InteractPressed)
         {
@@ -69,7 +69,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void HandleLinterna()
+    private void Linterna()
     {
         if (inputs.LinternaPressed)
         {

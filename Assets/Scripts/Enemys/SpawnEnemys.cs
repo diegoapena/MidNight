@@ -6,11 +6,13 @@ public class SpawnEnemys : MonoBehaviour
     public Transform[] shapeshifterSpawnPoints;
     public Transform[] shadowSpawnPoints;
     public Transform[] noisySpawnPoints;
+    public Transform[] ShapeshifterBedSpawnPoint;
 
     [Header("Prefabs de Enemigos")]
     public GameObject shapeshifterEnemyPrefab;
     public GameObject shadowPrefab;
     public GameObject noisyPrefab;
+    public GameObject ShapeshifterBed;
 
     private int currentEnemyCount = 0;
     private const int maxEnemies = 10;
@@ -36,6 +38,7 @@ public class SpawnEnemys : MonoBehaviour
     private void Spawnshapeshifter()
     {
         SpawnEnemy(shapeshifterEnemyPrefab, shapeshifterSpawnPoints);
+        SpawnEnemy(ShapeshifterBed, ShapeshifterBedSpawnPoint);
     }
 
     private void SpawnShadow()

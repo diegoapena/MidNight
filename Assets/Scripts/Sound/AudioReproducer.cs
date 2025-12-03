@@ -1,8 +1,7 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
-
-// Este script controla la reproducción de clips de audio y desactiva el objeto una vez que el clip termina.
-// Relación con otros scripts:
+// Este script controla la reproducciÃ³n de clips de audio y desactiva el objeto una vez que el clip termina.
+// RelaciÃ³n con otros scripts:
 // Es utilizado por SoundManager para reproducir sonidos desde un pool de objetos.
 [RequireComponent(typeof(AudioSource))]
 public class AudioReproducer : MonoBehaviour
@@ -10,19 +9,13 @@ public class AudioReproducer : MonoBehaviour
     AudioSource source;
 
     private void Awake()
-    { 
-        source = GetComponent<AudioSource> ();
-        
-    }
-    void Start()
     {
-        
+        source = GetComponent<AudioSource>();
     }
 
     public void SetAudio()
     {
-        //source.clip.length
-
+        source.Play(); 
         Invoke("Desactiveobj", source.clip.length);
     }
 
