@@ -17,10 +17,12 @@ public class BarraDeCordura : MonoBehaviour
     private float temporizador;
     private bool corduraBajando = false;
 
+
     [Header("Referencias")]
     public Player player;
     public Image BarraCordura;
     public Text TextoCordura;
+
 
     private bool pollutantSpawned = false;
 

@@ -12,12 +12,20 @@ public class GameManager : MonoBehaviour
 [SerializeField] private TMP_Text timerText;
 [SerializeField] private GameObject player;
 [SerializeField] private SpawnEnemys spawnEnemys;
-
-private float timeElapsed;
+    
+    private float timeElapsed;
 private int minutes, seconds, cents;
-private bool spawnStarted = false; 
+private bool spawnStarted = false;
+    public static GameManager Instance;
 
-private void Update()
+    private void Awake()
+    {
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(gameObject);
+    }
+    private void Update()
 {
     // Actualizar el tiempo
     timeElapsed += Time.deltaTime;
