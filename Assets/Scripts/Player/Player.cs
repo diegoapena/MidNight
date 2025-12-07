@@ -53,11 +53,14 @@ public class Player : MonoBehaviour
             transform.position += (Vector3)input * speed * Time.deltaTime;
             anim.UpdateMovementAnimation(input);
 
-           
+            // Reproducir pasos
+            SoundManager.Instance.PlayPlayerStep();
         }
         else
         {
             anim.StopMovementAnimation();
+            // Detener pasos si no se camina
+            SoundManager.Instance.StopPlayerStep();
         }
     }
 
@@ -92,4 +95,5 @@ public class Player : MonoBehaviour
     {
         interactableObject = null;
     }
+
 }
