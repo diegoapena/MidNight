@@ -8,22 +8,15 @@ using UnityEngine.UI;
 public class BarraDeCordura : MonoBehaviour
 {
     public static BarraDeCordura Instance;
-
-    [Header("Cordura")]
     [SerializeField] private float maxCordura = 100f;
     private float corduraActual;
-    public float maxSanity = 100f;
-    public float tiempoEntreBajas = 1f;
+    private float maxSanity = 100f;
+    private float tiempoEntreBajas = 1f;
     private float temporizador;
     private bool corduraBajando = false;
-
-
-    [Header("Referencias")]
     public Player player;
-    public Image BarraCordura;
+    public Image BarraCordura;                                                                      
     public Text TextoCordura;
-
-
     private bool pollutantSpawned = false;
 
     private void Awake()
@@ -51,10 +44,6 @@ public class BarraDeCordura : MonoBehaviour
             if (PollutantEnemy.Instance != null)
             {
                 PollutantEnemy.Instance.ActivarPollutant();
-            }
-            else
-            {
-                Debug.LogError(" No existe INSTANCE de PollutantEnemy en escena.");
             }
         }
     }
