@@ -21,9 +21,21 @@ public class AudioReproducer : MonoBehaviour
 
     public void SetAudio()
     {
-        
-
         Invoke("Desactiveobj", source.clip.length);
+    }
+
+    // Desactiva después de un tiempo específico
+    public void SetAudio(float delay)
+    {
+        Invoke("Desactiveobj", delay);
+    }
+
+   
+    public void SetAudio(AudioClip clip)
+    {
+        source.clip = clip;
+        source.Play();
+        Invoke("Desactiveobj", clip.length);
     }
 
     public void Desactiveobj()
