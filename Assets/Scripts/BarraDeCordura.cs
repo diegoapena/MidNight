@@ -10,24 +10,18 @@ public class BarraDeCordura : MonoBehaviour
     public static BarraDeCordura Instance;
     [SerializeField] private float maxCordura = 100f;
     private float corduraActual;
-    private float maxSanity = 100f;
+    
     private float tiempoEntreBajas = 1f;
     private float temporizador;
-    private bool corduraBajando = false;
     public Player player;
     public Image BarraCordura;                                                                      
     public Text TextoCordura;
     private bool pollutantSpawned = false;
-
-    private void Awake()
-    {
-        if (Instance == null) Instance = this;
-        else Destroy(gameObject);
-    }
+    private bool corduraBajando = false;
 
     private void Start()
     {
-        player.Sanity = maxSanity;
+        player.Sanity = maxCordura;
         corduraActual = maxCordura;
         ActualizarInterfaz();
     }
@@ -66,7 +60,7 @@ public class BarraDeCordura : MonoBehaviour
     private void ActualizarInterfaz()
     {
         if (BarraCordura != null)
-            BarraCordura.fillAmount = player.Sanity / maxSanity;
+            BarraCordura.fillAmount = player.Sanity / maxCordura;
 
         if (TextoCordura != null)
             TextoCordura.text = player.Sanity.ToString("0");
@@ -87,8 +81,7 @@ public class BarraDeCordura : MonoBehaviour
 
     public void RestaurarCordura()
     {
-        player.Sanity = maxSanity;
+        player.Sanity = maxCordura;
         ActualizarInterfaz();
-        Debug.Log("Cordura restaurada al 100% por muerte de la entidad.");
     }
 }

@@ -9,21 +9,11 @@ using UnityEngine.Rendering.Universal;
 public class LinternaController : MonoBehaviour
 {
     public Light2D flashlight;
-    public float rotationSpeed = 8f;
+    private float rotationSpeed = 8f;
     private bool isOn = false;
-
     [SerializeField] private float detectionAngle = 0.8f;
     [SerializeField] private float detectionRange = 5f;
     
-
-   
-
-    private void Awake()
-    {
-        
-       
-    }
-
     public void ToggleLight()
     {
         isOn = !isOn;
