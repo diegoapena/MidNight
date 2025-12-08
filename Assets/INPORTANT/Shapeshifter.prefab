@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 6279533289232481785}
   - component: {fileID: -3820061857726886727}
   - component: {fileID: 3916533547067079458}
+  - component: {fileID: -2155266948041126547}
   m_Layer: 0
   m_Name: Shapeshifter
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -147,3 +148,15 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 8.46, y: 8.26}
   m_EdgeRadius: 0
+--- !u!114 &-2155266948041126547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1300787934306798873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddf401621c8ae22478a0baf3ec63aac5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

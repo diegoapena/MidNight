@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 8481126705970015604}
   - component: {fileID: 7662274837603236764}
   - component: {fileID: -6564084776145584161}
+  - component: {fileID: -8231633638328704211}
   m_Layer: 0
   m_Name: Shadow
   m_TagString: Enemy
@@ -111,6 +112,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 972193ce5d2459149a90aa7cc32489e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyDataList: []
+  nombre: {fileID: 0}
+  levelOfThreat: {fileID: 0}
+  descripcion: {fileID: 0}
+  cara: {fileID: 0}
 --- !u!61 &-1369574595841139513
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -403,6 +409,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-8231633638328704211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5092088900346181735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddf401621c8ae22478a0baf3ec63aac5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6240387562709672770
 GameObject:
   m_ObjectHideFlags: 0
