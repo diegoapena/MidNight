@@ -19,6 +19,10 @@ public class BarraDeCordura : MonoBehaviour
     private bool pollutantSpawned = false;
     private bool corduraBajando = false;
 
+    private void Awake()
+    {
+        Instance = this;
+    }
     private void Start()
     {
         player.Sanity = maxCordura;

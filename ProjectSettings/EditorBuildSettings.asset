@@ -14,9 +14,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Entities.unity
     guid: 2ba02652b41ec9e48aec98d5169a1e6f
-  - enabled: 0
-    path: Assets/Scenes/MidNightProfte.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Scenes/Victory.unity
+    guid: a8ad9c6f67dbae447a0e3a891e353ce4
+  - enabled: 1
+    path: Assets/Scenes/GameOver.unity
+    guid: 6ceb943e51b23e54d91caab59a8603fb
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 035a14edd3e145d4d868bb090616d5c6, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}

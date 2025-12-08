@@ -70,7 +70,7 @@ public class PollutantEnemy : MonoBehaviour
             Debug.Log(" Pollutant mató al jugador");
              Destroy(collision.gameObject);
 
-           
+            SceneManager.LoadScene("GameOver");
         }
     }
 }

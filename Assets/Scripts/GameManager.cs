@@ -1,6 +1,7 @@
 ﻿using TMPro;
 using UnityEditor.PackageManager;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 // Este script gestiona el tiempo y el spawn de enemigos.
 // Contiene un temporizador y activa el spawn de enemigos después de un minuto.
@@ -38,6 +39,11 @@ private bool spawnStarted = false;
         spawnEnemys.StartSpawning();
         Debug.Log(" Spawn de enemigos iniciado al minuto 1");
     }
+        if (timeElapsed >= 360f)
+        {
+            SceneManager.LoadScene("Victory");
+        }
+    
 }
 
 private void Timer()
