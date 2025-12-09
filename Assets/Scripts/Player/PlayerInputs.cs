@@ -1,7 +1,8 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.InputSystem;
-// Este script gestiona las entradas del jugador, como movimiento, interacción y uso de la linterna.
-// Relación con otros scripts:
+
+// Este script gestiona las entradas del jugador, como movimiento, interacciÃ³n y uso de la linterna.
+// RelaciÃ³n con otros scripts:
 // Es utilizado por Player para manejar las acciones del jugador.
 public class PlayerInputs : MonoBehaviour
 {
@@ -25,8 +26,9 @@ public class PlayerInputs : MonoBehaviour
         input.Player.Move.canceled += OnMove;
 
         input.Player.Linterna.started += OnLinterna;
-        
 
+       
+        input.Player.Interact.started += OnInteract;
     }
 
     private void OnDisable()
@@ -37,13 +39,15 @@ public class PlayerInputs : MonoBehaviour
 
         input.Player.Linterna.started -= OnLinterna;
 
+       
+        input.Player.Interact.started -= OnInteract;
+
         input.Disable();
     }
 
     private void OnMove(InputAction.CallbackContext ctx)
     {
         MoveInput = ctx.ReadValue<Vector2>();
-       
     }
 
     private void OnLinterna(InputAction.CallbackContext ctx)
@@ -51,8 +55,20 @@ public class PlayerInputs : MonoBehaviour
         LinternaPressed = true;
     }
 
+   
+    private void OnInteract(InputAction.CallbackContext ctx)
+    {
+        InteractPressed = true;
+    }
+
     public void ClearLinterna()
     {
         LinternaPressed = false;
+    }
+
+    
+    public void ClearInteract()
+    {
+        InteractPressed = false;
     }
 }

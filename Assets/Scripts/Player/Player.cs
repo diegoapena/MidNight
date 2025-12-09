@@ -70,6 +70,8 @@ public class Player : MonoBehaviour
         {
             interactableObject.Interact(gameObject);
         }
+
+        inputs.ClearInteract();
     }
 
     private void Linterna()
