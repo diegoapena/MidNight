@@ -103,7 +103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delayAparicion: 2
-  velocidad: 2
+  velocidad: 3
 --- !u!61 &6469582680887145088
 BoxCollider2D:
   m_ObjectHideFlags: 0

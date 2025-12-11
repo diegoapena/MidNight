@@ -6,9 +6,15 @@ public class ShapeshifterEnemy : MonoBehaviour
 
     void Start()
     {
-
+        PlayAppearSound();
     }
-
+    private void PlayAppearSound()
+    {
+        if (SoundManager.Instance != null)
+        {
+            SoundManager.Instance.PlaySound("ShapeShifterAppear", 1f);
+        }
+    }
     public void DestroyEnemy()
     {
         if (isDead) return;
