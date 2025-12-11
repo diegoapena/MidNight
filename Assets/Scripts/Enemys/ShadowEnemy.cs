@@ -56,15 +56,14 @@ public class ShadowEnemy : BaseEnemy
     }
 
     public void DieByLight() => Die();
-    public void DestroyEnemy()
+    public override void DestroyEnemy()
     {
-        Debug.Log($"{gameObject.name} destruido por la linterna.");
-        Destroy(gameObject);
-
         if (isDead) return;
         isDead = true;
 
+        Debug.Log($"{gameObject.name} destruido por la linterna.");
 
+        // Restaurar cordura
         if (BarraDeCordura.Instance != null)
         {
             BarraDeCordura.Instance.RestaurarCordura();
@@ -72,7 +71,8 @@ public class ShadowEnemy : BaseEnemy
 
         Debug.Log("Shadow muerto — Cordura restaurada al 100.");
 
+        
         Destroy(gameObject);
     }
-   
+
 }
