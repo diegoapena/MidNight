@@ -23,12 +23,17 @@ public class RoomSow : MonoBehaviour
 
     public void SetRoom()
     {
-       
-        if (lightRoom != null)
-            lightRoom.SetActive(activeRoom);
-       
-        if (lightRoom1 != null)
-            lightRoom1.SetActive(activeRoom);
-       
+        try
+        {
+            if (lightRoom != null)
+                lightRoom.SetActive(activeRoom);
+
+            if (lightRoom1 != null)
+                lightRoom1.SetActive(activeRoom);
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogError("Error al establecer el estado de la habitación: " + e.Message);
+        }
     }
 }
