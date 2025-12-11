@@ -10,6 +10,8 @@ public class SoundManager : MonoBehaviour
     public AudioClip shadowAppearClip;
     public AudioClip PollulantAppearClip;
     public AudioClip ShapeShifterAppearClip;
+    public AudioClip NoisyAppearCLip;
+
     public GameObject AudioReproducerPrefab;
     
     public int PoolSize = 10;
@@ -50,6 +52,7 @@ public class SoundManager : MonoBehaviour
         musicaData.Add("shadowAppear", shadowAppearClip);
         musicaData.Add("PollulantAppear", PollulantAppearClip);
         musicaData.Add("ShapeShifterAppear", ShapeShifterAppearClip);
+        musicaData.Add("NoisyAppear", NoisyAppearCLip);
     }
 
     // --- Métodos para pasos del Player ---

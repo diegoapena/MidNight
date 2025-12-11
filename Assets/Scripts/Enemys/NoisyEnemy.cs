@@ -2,15 +2,18 @@ using UnityEngine;
 
 public class NoisyEnemy : BaseEntity
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    new void Start()
+    
+      new void Start()
     {
-        
+        PlayAppearSound();
     }
 
-    // Update is called once per frame
-    void Update()
+
+    private void PlayAppearSound()
     {
-        
+        if (SoundManager.Instance != null)
+        {
+            SoundManager.Instance.PlaySound("NoisyAppear", 1f);
+        }
     }
 }
