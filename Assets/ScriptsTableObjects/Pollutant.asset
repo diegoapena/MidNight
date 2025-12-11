@@ -17,6 +17,6 @@ MonoBehaviour:
   Health: 0
   Damage: 0
   LevelOfThreat: 5
-  Icon: {fileID: 0}
+  Icon: {fileID: -6346181910766829960, guid: e2eaa60f7e4d1124394fc17beb79f449, type: 3}
   Description: "\xBFPor qu\xE9 no puedes salir? \xBFPor qu\xE9 todo est\xE1 tan\u2026
     quieto?"

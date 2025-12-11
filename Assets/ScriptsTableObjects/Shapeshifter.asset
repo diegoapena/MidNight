@@ -17,6 +17,6 @@ MonoBehaviour:
   Health: 2
   Damage: 2
   LevelOfThreat: 3
-  Icon: {fileID: 0}
+  Icon: {fileID: -1477837745134180964, guid: a20cdfac93f669346b0b1e74b479a979, type: 3}
   Description: "Esa silla\u2026 \xBFsiempre estuvo ah\xED? \xBFPor qu\xE9 parece
     m\xE1s alta ahora?"
