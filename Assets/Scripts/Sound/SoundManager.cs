@@ -8,7 +8,7 @@ public class SoundManager : MonoBehaviour
     public AudioClip stepsPlayer;
     public AudioClip FlashLight;
     public AudioClip shadowAppearClip;
-
+    public AudioClip PollulantAppearClip;
     public GameObject AudioReproducerPrefab;
     public int PoolSize = 10;
     public List<GameObject> AudioPool = new();
@@ -46,6 +46,7 @@ public class SoundManager : MonoBehaviour
         musicaData.Add("stepplayer", stepsPlayer);
         musicaData.Add("flashlight", FlashLight);
         musicaData.Add("shadowAppear", shadowAppearClip);
+        musicaData.Add("PollulantAppear", PollulantAppearClip);
     }
 
     // --- Métodos para pasos del Player ---

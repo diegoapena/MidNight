@@ -20,9 +20,18 @@ public class PollutantEnemy : MonoBehaviour
     private Transform jugador;
     private bool persiguiendo = false;
 
+   
+    private void PlayAppearSound()
+    {
+        if (SoundManager.Instance != null)
+        {
+            SoundManager.Instance.PlaySound("PollulantAppear", 1f);
+        }
+    }
     private void Awake()
     {
         Instance = this;
+        gameObject.SetActive(false);
     }
 
     public void ActivarPollutant()
@@ -35,8 +44,8 @@ public class PollutantEnemy : MonoBehaviour
             Debug.LogError(" Player.Instance es NULL — No se encontró al jugador.");
             return;
         }
+        PlayAppearSound();
 
-        
         transform.position = jugador.position + new Vector3(1.5f, 0, 0);
 
         gameObject.SetActive(true);
