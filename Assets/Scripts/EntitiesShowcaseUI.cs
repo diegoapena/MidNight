@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-
+ /*
 public class EntitiesShowcaseUI : MonoBehaviour
 {
     public List<EnemyDataSO> list = new List<EnemyDataSO>();
@@ -35,3 +35,4 @@ public class EntitiesShowcaseUI : MonoBehaviour
 
     }
 }
+ */
